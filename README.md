@@ -39,3 +39,13 @@ npm run index:urls
 ```
 
 This prints only the currently published RPG Maker-scope URLs.
+
+## Credits
+
+- Author: [bikai](https://github.com/bikai9289)
+- Upstream / based on work by [paradoxie](https://github.com/paradoxie/saveeditor) (MIT)
+- Site: https://savefiletool.com
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
