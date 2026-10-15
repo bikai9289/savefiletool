@@ -49,3 +49,4 @@ This prints only the currently published RPG Maker-scope URLs.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
