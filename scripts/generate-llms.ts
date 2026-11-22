@@ -13,6 +13,9 @@ For full documentation, see: ${origin}/llms-full.txt
 ## Current Public Routes
 
 - /
+- /ko/
+- /ja/
+- /zh-cn/
 - /editor/rpg-maker-mz/
 - /editor/rpg-maker-mv/
 - /faq/
@@ -51,7 +54,10 @@ const llmsFull = `# SaveFileTool
 
 | Page | URL |
 | --- | --- |
-| Home | ${origin}/ |
+| Home (English) | ${origin}/ |
+| Home (Korean / 한국어) | ${origin}/ko/ |
+| Home (Japanese / 日本語) | ${origin}/ja/ |
+| Home (Simplified Chinese / 简体中文) | ${origin}/zh-cn/ |
 | RPG Maker MZ Editor | ${origin}/editor/rpg-maker-mz/ |
 | RPG Maker MV Editor | ${origin}/editor/rpg-maker-mv/ |
 | FAQ | ${origin}/faq/ |

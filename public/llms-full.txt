@@ -16,7 +16,10 @@
 
 | Page | URL |
 | --- | --- |
-| Home | https://savefiletool.com/ |
+| Home (English) | https://savefiletool.com/ |
+| Home (Korean / 한국어) | https://savefiletool.com/ko/ |
+| Home (Japanese / 日本語) | https://savefiletool.com/ja/ |
+| Home (Simplified Chinese / 简体中文) | https://savefiletool.com/zh-cn/ |
 | RPG Maker MZ Editor | https://savefiletool.com/editor/rpg-maker-mz/ |
 | RPG Maker MV Editor | https://savefiletool.com/editor/rpg-maker-mv/ |
 | FAQ | https://savefiletool.com/faq/ |

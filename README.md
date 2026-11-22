@@ -2,7 +2,7 @@
 
 SaveFileTool is a browser-based save editor for RPG Maker MZ `.rmmzsave` and MV `.rpgsave` files.
 
-[Open SaveFileTool](https://savefiletool.com) | [MZ editor](https://savefiletool.com/editor/rpg-maker-mz/) | [MV editor](https://savefiletool.com/editor/rpg-maker-mv/)
+[Open SaveFileTool](https://savefiletool.com) | [MZ editor](https://savefiletool.com/editor/rpg-maker-mz/) | [MV editor](https://savefiletool.com/editor/rpg-maker-mv/) | [한국어](https://savefiletool.com/ko/) | [日本語](https://savefiletool.com/ja/) | [简体中文](https://savefiletool.com/zh-cn/)
 
 ![SaveFileTool MV editor showing a verified gold edit](docs/assets/savefiletool-editor.png)
 

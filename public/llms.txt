@@ -7,6 +7,9 @@ For full documentation, see: https://savefiletool.com/llms-full.txt
 ## Current Public Routes
 
 - /
+- /ko/
+- /ja/
+- /zh-cn/
 - /editor/rpg-maker-mz/
 - /editor/rpg-maker-mv/
 - /faq/
