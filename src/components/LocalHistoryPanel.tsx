@@ -140,11 +140,11 @@ export default function LocalHistoryPanel({ onFileSelect }: LocalHistoryPanelPro
 
     if (!enabled) {
         return (
-            <section className="rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+            <section className="rounded-xl border border-blue-100 dark:border-blue-900/60 bg-blue-50 dark:bg-blue-950/40 p-4 text-sm text-blue-900 dark:text-blue-100">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <p className="font-semibold">{t('localHistory.title')}</p>
-                        <p className="mt-1 text-blue-700">{t('localHistory.optInDesc')}</p>
+                        <p className="mt-1 text-blue-700 dark:text-blue-200">{t('localHistory.optInDesc')}</p>
                     </div>
                     <button
                         type="button"
@@ -159,11 +159,11 @@ export default function LocalHistoryPanel({ onFileSelect }: LocalHistoryPanelPro
     }
 
     return (
-        <section className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <section className="rounded-xl border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                    <p className="font-semibold text-slate-900">{t('localHistory.title')}</p>
-                    <p className="mt-1 text-sm text-slate-600">
+                    <p className="font-semibold text-slate-900 dark:text-white">{t('localHistory.title')}</p>
+                    <p className="mt-1 text-sm text-slate-600 dark:text-gray-300">
                         {history.length > 0 ? t('localHistory.recent') : t('localHistory.empty')}
                     </p>
                 </div>
@@ -172,7 +172,7 @@ export default function LocalHistoryPanel({ onFileSelect }: LocalHistoryPanelPro
                         <button
                             type="button"
                             onClick={clearAll}
-                            className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                            className="rounded-lg border border-slate-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-semibold text-slate-700 dark:text-gray-100 hover:bg-slate-50 dark:hover:bg-gray-600"
                         >
                             {t('localHistory.clear')}
                         </button>
@@ -180,7 +180,7 @@ export default function LocalHistoryPanel({ onFileSelect }: LocalHistoryPanelPro
                     <button
                         type="button"
                         onClick={disableAndClear}
-                        className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-red-700 hover:bg-red-100"
+                        className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950/50 px-3 py-2 text-xs font-semibold text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/50"
                     >
                         {t('localHistory.disable')}
                     </button>
@@ -190,11 +190,11 @@ export default function LocalHistoryPanel({ onFileSelect }: LocalHistoryPanelPro
             {history.length > 0 && (
                 <div className="mt-4 space-y-3">
                     {history.map((item) => (
-                        <article key={item.id} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                        <article key={item.id} className="rounded-lg border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-900/60 p-3">
                             <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                                 <div className="min-w-0">
-                                    <p className="truncate text-sm font-semibold text-slate-900">{item.fileName}</p>
-                                    <p className="mt-1 text-xs text-slate-500">
+                                    <p className="truncate text-sm font-semibold text-slate-900 dark:text-white">{item.fileName}</p>
+                                    <p className="mt-1 text-xs text-slate-500 dark:text-gray-400">
                                         {item.format} · {formatBytes(item.size)} · {new Date(item.createdAt).toLocaleString()}
                                     </p>
                                 </div>
@@ -203,20 +203,20 @@ export default function LocalHistoryPanel({ onFileSelect }: LocalHistoryPanelPro
                                         {t('localHistory.loadEdited')}
                                     </button>
                                     <details className="relative">
-                                        <summary className="cursor-pointer list-none rounded-md bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100">
+                                        <summary className="cursor-pointer list-none rounded-md bg-white dark:bg-gray-700 px-2.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-gray-100 ring-1 ring-slate-200 dark:ring-gray-600 hover:bg-slate-100 dark:hover:bg-gray-600">
                                             {t('localHistory.more')}
                                         </summary>
-                                        <div className="absolute right-0 z-10 mt-2 flex w-44 flex-col rounded-lg border border-slate-200 bg-white p-1 shadow-lg">
-                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-100" onClick={() => loadRecord(item.id, 'original')}>
+                                        <div className="absolute right-0 z-10 mt-2 flex w-44 flex-col rounded-lg border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-1 shadow-lg">
+                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-gray-700" onClick={() => loadRecord(item.id, 'original')}>
                                                 {t('localHistory.loadOriginal')}
                                             </button>
-                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-100" onClick={() => downloadRecord(item, 'original')}>
+                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-gray-700" onClick={() => downloadRecord(item, 'original')}>
                                                 {t('localHistory.downloadOriginal')}
                                             </button>
-                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-700 hover:bg-slate-100" onClick={() => downloadRecord(item, 'edited')}>
+                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-700 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-gray-700" onClick={() => downloadRecord(item, 'edited')}>
                                                 {t('localHistory.downloadEdited')}
                                             </button>
-                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-red-700 hover:bg-red-50" onClick={() => deleteRecord(item.id)}>
+                                            <button type="button" className="rounded-md px-3 py-2 text-left text-xs font-semibold text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/50" onClick={() => deleteRecord(item.id)}>
                                                 {t('localHistory.delete')}
                                             </button>
                                         </div>

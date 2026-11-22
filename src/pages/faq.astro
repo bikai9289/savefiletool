@@ -131,16 +131,16 @@ const allQuestions = faqCategories.flatMap((cat) => cat.questions);
 
   <section class="container mx-auto px-4 py-16">
     <div class="mx-auto max-w-4xl">
-      <nav class="mb-12 rounded-2xl bg-gray-50 p-6">
-        <h2 class="mb-4 text-lg font-bold text-gray-900">Jump to Section</h2>
+      <nav class="mb-12 rounded-2xl bg-gray-50 dark:bg-gray-800/80 border border-gray-100 dark:border-gray-700 p-6">
+        <h2 class="mb-4 text-lg font-bold text-gray-900 dark:text-white">Jump to Section</h2>
         <div class="flex flex-wrap gap-3">
           {
             faqCategories.map((category, index) => (
               <a
                 href={`#section-${index}`}
-                class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium transition-colors hover:border-primary-300 hover:bg-primary-50"
+                class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 transition-colors hover:border-primary-300 hover:bg-primary-50 dark:hover:border-primary-500 dark:hover:bg-gray-800"
               >
-                <FaqIcon name={category.icon} class="h-4 w-4 text-primary-500" />
+                <FaqIcon name={category.icon} class="h-4 w-4 text-primary-500 dark:text-primary-400" />
                 <span>{category.title}</span>
               </a>
             ))
@@ -151,20 +151,20 @@ const allQuestions = faqCategories.flatMap((cat) => cat.questions);
       {
         faqCategories.map((category, catIndex) => (
           <section id={`section-${catIndex}`} class="mb-12">
-            <h2 class="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900">
-              <FaqIcon name={category.icon} class="h-8 w-8 text-primary-500" />
+            <h2 class="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
+              <FaqIcon name={category.icon} class="h-8 w-8 text-primary-500 dark:text-primary-400" />
               {category.title}
             </h2>
             <div class="space-y-4">
               {category.questions.map((faq) => (
-                <details class="group overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
-                  <summary class="flex cursor-pointer items-center justify-between p-6 font-semibold text-gray-900 hover:bg-gray-50">
+                <details class="group overflow-hidden rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
+                  <summary class="flex cursor-pointer items-center justify-between p-6 font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700/60">
                     {faq.question}
-                    <svg class="ml-4 h-5 w-5 flex-shrink-0 text-gray-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="ml-4 h-5 w-5 flex-shrink-0 text-gray-500 dark:text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </summary>
-                  <div class="px-6 pb-6 leading-relaxed text-gray-600">{faq.answer}</div>
+                  <div class="px-6 pb-6 leading-relaxed text-gray-600 dark:text-gray-300">{faq.answer}</div>
                 </details>
               ))}
             </div>

@@ -146,6 +146,16 @@ export default function EditorApp({ acceptedFileTypes, editorSlug }: EditorAppPr
         };
     }, []);
 
+    // Close unsupported-file error modal on Escape
+    React.useEffect(() => {
+        if (!errorModalOpen) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setErrorModalOpen(false);
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [errorModalOpen]);
+
     if (!file) {
         return (
             <div className="space-y-8">
@@ -177,27 +187,27 @@ export default function EditorApp({ acceptedFileTypes, editorSlug }: EditorAppPr
                 {errorModalOpen && (
                     <div className="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onClick={() => setErrorModalOpen(false)}></div>
+                            <div className="fixed inset-0 z-0 bg-slate-900/75 transition-opacity" aria-hidden="true" onClick={() => setErrorModalOpen(false)}></div>
                             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                            <div className="relative z-10 inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 border border-gray-200 dark:border-gray-700">
                                 <div className="sm:flex sm:items-start">
-                                    <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                        <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 dark:bg-red-900/40 sm:mx-0 sm:h-10 sm:w-10">
+                                        <svg className="h-6 w-6 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                         </svg>
                                     </div>
                                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                        <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                        <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">
                                             File Type Not Supported
                                         </h3>
                                         <div className="mt-2">
-                                            <p className="text-sm text-gray-500">
-                                                You selected <strong>{unsupportedFile?.name}</strong>, but this editor currently only supports:
+                                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                                                You selected <strong className="text-gray-900 dark:text-white">{unsupportedFile?.name}</strong>, but this editor currently only supports:
                                             </p>
-                                            <p className="mt-2 text-sm font-mono bg-gray-100 p-2 rounded">
+                                            <p className="mt-2 text-sm font-mono bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-2 rounded">
                                                 {acceptedFileTypes}
                                             </p>
-                                            <p className="mt-4 text-sm text-gray-500">
+                                            <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
                                                 Would you like to request support for this file type?
                                             </p>
                                         </div>
@@ -213,7 +223,7 @@ export default function EditorApp({ acceptedFileTypes, editorSlug }: EditorAppPr
                                     </a>
                                     <button
                                         type="button"
-                                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:w-auto sm:text-sm"
+                                        className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-base font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:w-auto sm:text-sm"
                                         onClick={() => setErrorModalOpen(false)}
                                     >
                                         Cancel
