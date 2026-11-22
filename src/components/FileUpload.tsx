@@ -38,8 +38,8 @@ export default function FileUpload({ onFileSelect, accept }: FileUploadProps) {
       className={`
         relative border-2 border-dashed rounded-xl p-12 text-center transition-all duration-300 ease-in-out
         ${isDragging
-          ? 'border-primary-500 bg-primary-50 scale-[1.02] shadow-lg ring-4 ring-primary-100'
-          : 'border-gray-300 hover:border-primary-400 hover:bg-gray-50 hover:shadow-md'
+          ? 'border-primary-500 bg-primary-50 dark:bg-primary-950/40 scale-[1.02] shadow-lg ring-4 ring-primary-100 dark:ring-primary-900/40'
+          : 'border-gray-300 dark:border-gray-700 hover:border-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800/60 hover:shadow-md'
         }
       `}
       onDrop={handleDrop}
@@ -47,8 +47,8 @@ export default function FileUpload({ onFileSelect, accept }: FileUploadProps) {
       onDragLeave={() => setIsDragging(false)}
     >
       {isDragging && (
-        <div className="absolute inset-0 bg-primary-50/50 backdrop-blur-[1px] rounded-xl flex items-center justify-center z-10 pointer-events-none">
-          <div className="animate-bounce text-primary-600 font-bold text-xl">
+        <div className="absolute inset-0 bg-primary-50/50 dark:bg-primary-950/60 backdrop-blur-[1px] rounded-xl flex items-center justify-center z-10 pointer-events-none">
+          <div className="animate-bounce text-primary-600 dark:text-primary-400 font-bold text-xl">
             {t('upload.drop')}
           </div>
         </div>
@@ -62,24 +62,24 @@ export default function FileUpload({ onFileSelect, accept }: FileUploadProps) {
       />
 
       <label htmlFor="file-input" className="cursor-pointer flex flex-col items-center justify-center w-full h-full">
-        <div className="bg-white p-4 rounded-full shadow-sm mb-4">
-          <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <div className="bg-white dark:bg-gray-800 p-4 rounded-full shadow-sm mb-4">
+          <svg className="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
           </svg>
         </div>
 
-        <p className="text-xl font-semibold text-gray-900 mb-2">
+        <p className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
           {selectedFile ? selectedFile.name : t('upload.drop')}
         </p>
-        <p className="text-sm text-gray-500 mb-6">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
           {t('upload.browse')}
         </p>
 
-        <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400 max-w-md">
+        <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-600 dark:text-gray-300 max-w-md">
           {(accept || '.rmmzsave,.rpgsave').split(',').map(extension => (
-            <span key={extension} className="bg-gray-100 px-2 py-1 rounded">{extension.trim()}</span>
+            <span key={extension} className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-2.5 py-1 rounded">{extension.trim()}</span>
           ))}
-          <span className="bg-gray-100 px-2 py-1 rounded">tested public entry</span>
+          <span className="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-2.5 py-1 rounded">tested public entry</span>
         </div>
       </label>
     </div>

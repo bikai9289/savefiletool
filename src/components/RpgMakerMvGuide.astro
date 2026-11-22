@@ -1,166 +1,257 @@
-<section aria-label="RPG Maker MV save editing guide">
-  <h2>What is an .rpgsave editor?</h2>
-  <p>
-    An .rpgsave editor reads a RPG Maker MV save slot and lets you change compatible values
-    before rebuilding the file. SaveFileTool runs this workflow in your browser. Choose your
-    desktop save above, check the detected gold value, make a small change, and download a zip
-    containing the edited save and an original backup. You do not need an account or an installer.
-  </p>
-  <p>
-    An MV save records more than money: it can contain party members, inventory, map position,
-    switches, variables, and progress. Those values belong to the game's rules. A number that
-    looks editable may control a quest or an event rather than a resource. Gold is the verified
-    edit path here; other detected fields remain candidates until you check them in your game.
-  </p>
+<section aria-label="RPG Maker MV save editing guide" class="not-prose mt-14 space-y-12">
+  <!-- Intro Summary Card -->
+  <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What is an .rpgsave editor?</h2>
+    <div class="mt-4 grid gap-6 md:grid-cols-2">
+      <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+        An <strong>.rpgsave editor</strong> reads an RPG Maker MV save slot and lets you change compatible values
+        before rebuilding the file. SaveFileTool runs this workflow in your browser: choose your desktop save above,
+        check the detected gold value, make a small change, and download a zip containing both the edited save and
+        an unchanged original backup. No account or installer is required.
+      </p>
+      <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+        An MV save records more than money—party members, inventory, map position, switches, variables, and quest
+        progress. A number that looks editable may control an event rather than a resource. <strong>Gold is the
+        verified edit path here</strong>; other detected fields remain candidates until you verify them in your game.
+      </p>
+    </div>
+  </div>
 
-  <h2>Where to find RPG Maker MV save files</h2>
-  <p>
-    For a downloaded Windows game, start in the folder containing its executable. Many packaged
-    MV games put the project inside <code>www/</code>, with saves in <code>www/save/</code>.
-    Others keep project files next to the executable and use <code>save/</code> directly.
-    An editor test project commonly uses the project's own <code>save/</code> folder.
-    Plugins and distribution choices can change these locations, so they are places to check,
-    not a promise that every MV game uses the same directory.
-  </p>
-  <p>
-    Save once in the game before searching. Look for a slot such as <code>file1.rpgsave</code>
-    and compare its modification time with your latest save. Files named <code>global.rpgsave</code>
-    or <code>config.rpgsave</code> serve different purposes; choose the numbered slot for changing
-    party gold. If several copies exist, make a fresh save and identify which directory changes.
-    Copy that file somewhere separate before opening it in the editor.
-  </p>
-  <p>
-    A game marked “Play in browser” may store progress in browser storage instead of writing
-    an .rpgsave file to disk. A desktop file picker cannot select that stored record directly.
-    Use an export feature provided by the game if one exists, or consult its save instructions.
-    Changing a downloaded web page's filename to <code>.rpgsave</code> does not create a save.
-  </p>
+  <!-- Save Folder Location with Visual Diagram -->
+  <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-slate-50/70 dark:bg-gray-800/50 p-6 sm:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Where to find RPG Maker MV save files</h2>
+    <figure class="my-6 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
+      <img
+        src="/images/guides/save-folder-location.jpg"
+        alt="Desktop folder tree comparing RPG Maker MV www/save/file1.rpgsave and RPG Maker MZ save/file1.rmmzsave locations"
+        class="block h-auto w-full"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption class="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/90 px-4 py-2.5 text-center text-xs text-gray-600 dark:text-gray-300 dark:text-gray-300">
+        Pick a numbered progress slot like <code>file1.rpgsave</code>—skip <code>config.rpgsave</code> and <code>global.rpgsave</code>.
+      </figcaption>
+    </figure>
 
-  <h2>Change gold and load the edited save</h2>
-  <ol>
-    <li>
-      <strong>Record the starting value.</strong> Open the game's menu, note your gold, and save
-      to a known slot. Close the game before replacing files so it cannot overwrite your changes.
-    </li>
-    <li>
-      <strong>Make a separate backup.</strong> Copy the numbered .rpgsave file to another folder.
-      Keep its original name so you can restore the right slot later.
-    </li>
-    <li>
-      <strong>Choose the file above.</strong> Confirm that the editor identifies RPG Maker MV
-      and displays the gold you recorded. If the values do not match, check the slot and directory
-      before editing; you may have selected an older save.
-    </li>
-    <li>
-      <strong>Edit one value.</strong> Enter a modest gold amount and leave other fields alone
-      for the first attempt. Avoid extreme numbers or multiple changes that make a failure hard
-      to diagnose.
-    </li>
-    <li>
-      <strong>Download and extract the zip.</strong> The package contains the rebuilt slot,
-      the original backup, and instructions. Put the edited numbered file in the game's save
-      directory; do not place the zip itself there or replace it with the backup-prefixed file.
-    </li>
-    <li>
-      <strong>Load the same slot.</strong> Reopen the game, choose Continue, and inspect the gold
-      in its menu. Check your location and party as well. Keep the backup until the game loads
-      correctly and normal play resumes.
-    </li>
-  </ol>
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">Desktop Windows</div>
+        <h3 class="mt-1 font-bold text-gray-900 dark:text-white">Check <code>www/save/</code> or <code>save/</code></h3>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Start in the folder containing the game executable. Many packaged MV games keep saves in <code>www/save/</code>;
+          others and editor test projects use <code>save/</code> directly. Plugins can change this location.
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wide text-emerald-600">Choose the Right Slot</div>
+        <h3 class="mt-1 font-bold text-gray-900 dark:text-white">Use numbered slots only</h3>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Save once in game and match the latest timestamp (e.g. <code>file1.rpgsave</code>). Files named
+          <code>global.rpgsave</code> or <code>config.rpgsave</code> store settings and save lists, not party gold.
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5">
+        <div class="text-xs font-semibold uppercase tracking-wide text-amber-600">Browser-Hosted Games</div>
+        <h3 class="mt-1 font-bold text-gray-900 dark:text-white">Stored in browser storage</h3>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          “Play in browser” MV games save to browser storage instead of disk. Use the game's own export feature if
+          available; renaming a saved webpage to <code>.rpgsave</code> will not create a valid save.
+        </p>
+      </div>
+    </div>
+  </div>
 
-  <h2>What the MV gold verification covers</h2>
-  <p>
-    Our verification used the official RPG Maker MV 1.6.1 trial package's default project,
-    running in its Windows game runtime. The game generated the original .rpgsave with
-    <strong>1234 gold</strong>. The local editor changed it to <strong>98765</strong>, exported
-    it, and the MV game loaded the edited file successfully. Its menu displayed the new amount.
-    This checks the full save, edit, export, and game-load workflow.
-  </p>
-  <p>
-    Comparing the decoded files showed that only the party gold field changed. Control values
-    remained intact: variable 1 was 42, switch 1 was true, and item 1 had a quantity of 3.
-    The exported original backup also matched the input file byte for byte. These are preservation
-    checks; they do not establish that editing those other fields is safe in every game.
-  </p>
-  <p>
-    This evidence comes from an official trial project, not a third-party commercial game.
-    It supports the standard MV gold workflow. A game with custom save plugins, integrity
-    checks, or a different data layout needs its own small edit and in-game loading check.
-    Keep that distinction in mind when deciding whether to replace a valuable progress file.
-  </p>
+  <!-- Step-by-Step Workflow with Visual Diagram -->
+  <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Change gold and load the edited save</h2>
+    <figure class="my-6 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 shadow-sm">
+      <img
+        src="/images/guides/safe-edit-workflow.jpg"
+        alt="Four-step safe RPG Maker MV save editing workflow: backup original, edit gold locally, extract ZIP, and verify in game"
+        class="block h-auto w-full"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption class="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/90 px-4 py-2.5 text-center text-xs text-gray-600 dark:text-gray-300 dark:text-gray-300">
+        Safe backup-first workflow: every export bundles the rebuilt slot alongside your untouched original file.
+      </figcaption>
+    </figure>
 
-  <h2>MV .rpgsave and MZ .rmmzsave are different formats</h2>
-  <p>
-    RPG Maker MV and MZ use different save formats even when their games look similar.
-    Standard MV 1.6.1 saves use LZString compression encoded as Base64. Standard MZ saves use
-    a different compression workflow based on pako. Their filenames identify different engine
-    formats: <code>.rpgsave</code> for MV and <code>.rmmzsave</code> for MZ. Changing the extension
-    does not convert the stored data or the engine objects inside it.
-  </p>
-  <p>
-    This page accepts .rpgsave files only. If your actual slot ends in .rmmzsave, open the
-    <a href="/editor/rpg-maker-mz/">RPG Maker MZ save editor</a> instead. Older extensions such
-    as <code>.rxdata</code>, <code>.rvdata</code>, and <code>.rvdata2</code> belong to other
-    RPG Maker generations and are outside this page's published support. Choose the editor
-    by the original file extension rather than the game's art style.
-  </p>
+    <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <li class="rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 p-4">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">1</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white">Record starting gold</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Note your current gold, save to a known slot, and close the game so it cannot overwrite your changes.</p>
+      </li>
+      <li class="rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 p-4">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">2</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white">Keep a separate backup</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Copy the numbered <code>.rpgsave</code> file to another folder with its original filename intact.</p>
+      </li>
+      <li class="rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 p-4">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">3</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white">Verify detected value</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Open the file above and confirm the displayed gold matches your game menu before editing.</p>
+      </li>
+      <li class="rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 p-4">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">4</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white">Edit one value first</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Enter a modest gold amount and leave other fields untouched on your first test to keep troubleshooting simple.</p>
+      </li>
+      <li class="rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 p-4">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">5</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white">Extract the ZIP package</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Place the rebuilt numbered file into the game's save directory—not the <code>.zip</code> archive or backup-prefixed copy.</p>
+      </li>
+      <li class="rounded-xl border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 p-4">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">6</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white">Load &amp; confirm in game</h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Reopen the game, choose Continue, and inspect gold, party, and map position before deleting your backup.</p>
+      </li>
+    </ol>
+  </div>
 
-  <h2>Why plugins and custom saves may not work</h2>
-  <p>
-    MV developers can install plugins that add fields, encrypt saves, change compression,
-    or move data into another container. A file can still end in .rpgsave while differing from
-    the default engine layout. Parsing a file successfully also does not prove that every
-    displayed field has the meaning you expect, or that the game's own checks will accept
-    an edited value.
-  </p>
-  <p>
-    If a save fails to parse, try a newly created slot from the same game and confirm that
-    you selected the actual save rather than an archive or asset. If the rebuilt file fails
-    to load, restore your backup and retry a smaller gold-only change. Persistent failure
-    suggests that this game's structure needs further investigation; repeatedly renaming
-    or recompressing the file is not a reliable fix.
-  </p>
+  <!-- Verification Evidence Highlight -->
+  <div class="rounded-2xl border border-emerald-200 dark:border-emerald-800/70 bg-emerald-50/70 dark:bg-emerald-950/40 p-6 sm:p-8">
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white">Verified Workflow</span>
+      <h2 class="text-xl font-bold text-emerald-950 dark:text-emerald-200">What the MV gold verification covers</h2>
+    </div>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <p class="text-sm leading-relaxed text-emerald-900 dark:text-emerald-100">
+        Our verification used the official <strong>RPG Maker MV 1.6.1</strong> trial package on Windows. The game
+        created an original <code>.rpgsave</code> with <strong>1234 gold</strong>; the local editor changed it to
+        <strong>98765</strong>, exported it, and the game loaded the rebuilt save cleanly with the new gold displayed.
+        Control values remained intact (variable 1 = 42, switch 1 = true, item 1 qty = 3), and the original backup
+        matched byte for byte.
+      </p>
+      <p class="text-sm leading-relaxed text-emerald-900 dark:text-emerald-100">
+        This evidence comes from an official trial project rather than third-party commercial games. It confirms the
+        standard MV gold workflow, while games with custom save plugins, integrity checks, or modified data layouts
+        still require a small test edit and in-game load check.
+      </p>
+    </div>
+  </div>
 
-  <h2>Privacy, backups, and the 10 MB limit</h2>
-  <p>
-    Selecting a save here reads it locally in your browser. The editing workflow does not
-    upload your save contents to a server. The download includes the original backup so you
-    can reverse a failed change. Keep an additional copy outside the game directory as well,
-    particularly if a launcher or cloud service synchronizes that folder.
-  </p>
-  <p>
-    Files larger than 10 MB are rejected. If you selected a whole project or zip archive,
-    extract it and choose the numbered save itself. An unusually large .rpgsave may contain
-    plugin data; do not delete parts of the file merely to fit the limit. Optional local history
-    stores copies in browser storage on your device, and it is separate from your game directory.
-  </p>
+  <!-- MV vs MZ Comparison Table -->
+  <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">MV .rpgsave and MZ .rmmzsave are different formats</h2>
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+      Choose the editor by your file's original extension rather than the game's art style. Renaming an extension does
+      not convert its compression or engine objects. Older formats (<code>.rxdata</code>, <code>.rvdata</code>,
+      <code>.rvdata2</code>) belong to earlier RPG Maker generations and are outside this page's published support.
+    </p>
+    <div class="mt-5 overflow-x-auto">
+      <table class="w-full border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 text-xs uppercase tracking-wide text-gray-600 dark:text-gray-300 dark:text-gray-300">
+            <th class="px-4 py-3 font-semibold">Engine</th>
+            <th class="px-4 py-3 font-semibold">Extension</th>
+            <th class="px-4 py-3 font-semibold">Standard Compression</th>
+            <th class="px-4 py-3 font-semibold">Typical Save Path</th>
+            <th class="px-4 py-3 font-semibold">Editor</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+          <tr class="bg-blue-50/40 dark:bg-blue-950/30">
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">RPG Maker MV</td>
+            <td class="px-4 py-3"><code>.rpgsave</code></td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-300">LZString + Base64</td>
+            <td class="px-4 py-3"><code>www/save/</code> or <code>save/</code></td>
+            <td class="px-4 py-3 font-semibold text-blue-700 dark:text-blue-300">Current page</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">RPG Maker MZ</td>
+            <td class="px-4 py-3"><code>.rmmzsave</code></td>
+            <td class="px-4 py-3 text-gray-600 dark:text-gray-300">pako (zlib/deflate)</td>
+            <td class="px-4 py-3"><code>save/</code></td>
+            <td class="px-4 py-3">
+              <a href="/editor/rpg-maker-mz/" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">Open MZ Save Editor &rarr;</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <h2>RPG Maker MV save editing questions</h2>
-  <h3>Why does the game still show my old gold?</h3>
-  <p>
-    Check that you extracted the edited file, replaced the correct slot, and loaded that slot
-    after restarting the game. Multiple installations can have separate save folders. Cloud
-    synchronization or a still-running game may also restore an older copy; compare file
-    modification times before trying another edit.
-  </p>
-  <h3>Can I open the .rpgsave file in a text editor instead?</h3>
-  <p>
-    A standard MV save contains compressed data, so its visible text is not ordinary editable
-    JSON. Changing characters directly can damage the encoded content. Use a compatible editor
-    to decode and rebuild it, and keep your original file for recovery.
-  </p>
-  <h3>Can this editor change quest switches or inventory safely?</h3>
-  <p>
-    Those fields are candidates. Their meaning and allowed values depend on the game and its
-    plugins. Folder Mode can load names from the game's JSON data files to help identify IDs,
-    but labels are not a compatibility guarantee. Test one small change in a disposable slot
-    before editing progress you want to keep.
-  </p>
-  <h3>What should I do if the edited slot will not load?</h3>
-  <p>
-    Close the game and restore the original numbered file from your separate backup or the
-    downloaded package. Check that the restored slot loads normally. Then, if you retry,
-    change only gold and use a conservative value. Keep the failing edited copy separate
-    from your working backup so you can compare the two.
-  </p>
+  <!-- Plugins & Privacy Two-Column Cards -->
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="rounded-2xl border border-amber-200 dark:border-amber-800/70 bg-amber-50/60 dark:bg-amber-950/40 p-6">
+      <h2 class="text-lg font-bold text-amber-950 dark:text-amber-200">Why plugins and custom saves may not work</h2>
+      <p class="mt-3 text-sm leading-relaxed text-amber-900 dark:text-amber-100">
+        MV developers can install plugins that add fields, encrypt saves, change compression, or move data into another
+        container. Parsing a file does not guarantee that every field has the expected meaning or passes custom checks.
+      </p>
+      <p class="mt-2 text-sm leading-relaxed text-amber-900 dark:text-amber-100">
+        If a rebuilt file fails to load, restore your backup and retry a smaller gold-only edit on a fresh slot.
+        Repeatedly renaming or recompressing the file will not fix a custom plugin layout.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800 p-6">
+      <h2 class="text-lg font-bold text-slate-900 dark:text-white">Privacy, backups, and the 10 MB limit</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700 dark:text-gray-300">
+        Files are read and rebuilt locally in your browser—save contents are never uploaded to a server. Every download
+        includes your original backup, and optional local history stays strictly in browser storage on your device.
+      </p>
+      <p class="mt-2 text-sm leading-relaxed text-slate-700 dark:text-gray-300">
+        Files over <strong>10 MB</strong> are rejected. Select the numbered <code>.rpgsave</code> file itself rather
+        than a full project folder or archive, and do not delete sections of a plugin-heavy save to shrink it.
+      </p>
+    </div>
+  </div>
+
+  <!-- Collapsible FAQ Accordion -->
+  <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">RPG Maker MV save editing questions</h2>
+    <div class="mt-5 space-y-3">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+          <h3>Why does the game still show my old gold?</h3>
+          <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+        </summary>
+        <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Check that you extracted the edited file from the zip, replaced the correct numbered slot, and restarted the
+          game before loading. Multiple installations, a still-running game, or cloud sync can restore an older copy;
+          compare file modification times before retrying.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+          <h3>Can I open the .rpgsave file in a text editor instead?</h3>
+          <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+        </summary>
+        <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          A standard MV save stores LZString-compressed data, so its raw text is not directly editable JSON. Editing
+          characters manually can corrupt the save. Use a compatible editor to decode and rebuild it while keeping your
+          original backup.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+          <h3>Can this editor change quest switches or inventory safely?</h3>
+          <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+        </summary>
+        <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Those fields are candidates whose meaning depends on the specific game and its plugins. Folder Mode can load
+          labels from the game's JSON data files to help identify IDs, but labels are not a compatibility guarantee.
+          Test one small change in a disposable slot first.
+        </p>
+      </details>
+
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+          <h3>What should I do if the edited slot will not load?</h3>
+          <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+        </summary>
+        <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Close the game and restore the original numbered file from your backup or the downloaded zip. Confirm the
+          restored slot loads normally, then retry with a conservative gold-only edit while keeping the failing copy
+          separate from your working backup.
+        </p>
+      </details>
+    </div>
+  </div>
 </section>

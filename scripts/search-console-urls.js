@@ -2,6 +2,9 @@ const host = (process.env.PUBLIC_SITE_ORIGIN || 'https://savefiletool.com').repl
 
 const urls = [
     '/',
+    '/ko',
+    '/ja',
+    '/zh-cn',
     '/llms.txt',
     '/llms-full.txt',
     '/editor/rpg-maker-mz',

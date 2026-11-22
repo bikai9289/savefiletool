@@ -24,6 +24,27 @@
   }
 }
 
+/* Remove literal backticks added by @tailwindcss/typography around inline code */
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: none;
+}
+
+/* Ensure inline code and form inputs remain high-contrast in dark mode */
+.dark code {
+  color: #e2e8f0;
+  background-color: rgba(30, 41, 59, 0.9);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.dark select,
+.dark textarea {
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
 /* Accessibility: Screen reader only utility */
 .sr-only {
   position: absolute;

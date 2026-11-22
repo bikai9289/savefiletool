@@ -3,47 +3,88 @@ import HomeTemplate from '../components/templates/HomeTemplate.astro';
 ---
 
 <HomeTemplate
-  title="RPG Maker Save Editor — MZ .rmmzsave & MV .rpgsave, Browser-Based"
-  description="Free online RPG Maker save editor for MZ .rmmzsave and MV .rpgsave files. Edit compatible saves locally in your browser. No download or server upload."
-  keywords="rpg maker save editor, online rpg maker save editor, browser-based save editor, rpg maker mz and mv save files"
+  title="RPG Maker Save Editor Online — Free Browser MV & MZ Editor"
+  description="Free online RPG Maker save editor for MZ .rmmzsave and MV .rpgsave files. Edit gold locally in your browser with automatic backup zip. No download or server upload."
+  keywords="rpg maker save editor, rpg maker save editor online, rpg maker mv save editor, rpg maker mz save editor, rmmzsave editor, rpgsave editor"
 >
-  <div slot="seo-content" class="max-w-4xl mx-auto prose prose-blue prose-lg text-gray-600 mb-16">
-    <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+  <div slot="seo-content" class="max-w-4xl mx-auto prose prose-blue prose-lg dark:prose-invert text-gray-600 dark:text-gray-300 mb-16">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
       Browser-Based RPG Maker Save Editor
     </h2>
     <p>
-      Welcome to <strong>SaveFileTool</strong>, a free
-      <a href="/editor/rpg-maker-mz/">RPG Maker MZ save editor</a>
-      for compatible <code>.rmmzsave</code> files, with backup-first guidance before you
-      replace any file.
+      Welcome to <strong>SaveFileTool</strong>, a free online <strong>RPG Maker save editor</strong>
+      built for compatible <a href="/editor/rpg-maker-mz/">RPG Maker MZ (<code>.rmmzsave</code>)</a>
+      and <a href="/editor/rpg-maker-mv/">RPG Maker MV (<code>.rpgsave</code>)</a> save files, with
+      backup-first guidance and automatic original-file archiving before you replace any slot.
     </p>
-    <p>
-      For MV saves, open the <a href="/editor/rpg-maker-mv/">RPG Maker MV save editor</a>
-      and choose a <code>.rpgsave</code> file. Gold editing has been verified in an official MV trial project.
-    </p>
+
+    <figure class="my-8 not-prose overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <img
+        src="/images/savefiletool-editor.png"
+        alt="SaveFileTool RPG Maker save editor interface showing verified gold editing in the browser"
+        class="w-full h-auto block"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption class="border-t border-gray-100 bg-gray-50 px-4 py-3 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800/90 dark:text-gray-300">
+        SaveFileTool editor preview: inspect detected currency and candidate fields locally, then export a zip with your original backup included.
+      </figcaption>
+    </figure>
+
+    <div class="grid md:grid-cols-2 gap-6 my-8 not-prose">
+      <a
+        href="/editor/rpg-maker-mz/"
+        class="group block rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">RPG Maker MZ Save Editor</h3>
+          <span class="rounded bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">.rmmzsave</span>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+          Edit desktop MZ numbered save slots (<code>file1.rmmzsave</code>) locally with a real-game verified currency workflow.
+        </p>
+        <span class="text-sm font-semibold text-primary-600 dark:text-primary-400 group-hover:underline">Open MZ Editor &rarr;</span>
+      </a>
+      <a
+        href="/editor/rpg-maker-mv/"
+        class="group block rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">RPG Maker MV Save Editor</h3>
+          <span class="rounded bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">.rpgsave</span>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+          Edit desktop MV save files (<code>file1.rpgsave</code>) with gold editing verified in an official MV 1.6.1 trial project.
+        </p>
+        <span class="text-sm font-semibold text-primary-600 dark:text-primary-400 group-hover:underline">Open MV Editor &rarr;</span>
+      </a>
+    </div>
+
     <div class="grid md:grid-cols-2 gap-8 my-8 not-prose">
-      <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
-        <h3 class="text-lg font-bold text-gray-900 mb-2">Why Use a Web-Based Editor?</h3>
-        <ul class="text-sm space-y-2 list-disc list-inside">
-          <li>No suspicious .exe downloads</li>
-          <li>Works on Mac, Windows, Linux, Android</li>
-          <li>Always up-to-date instantly</li>
-          <li>Process files locally for privacy</li>
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Why Use a Local Browser Editor?</h3>
+        <ul class="text-sm space-y-2 list-disc list-inside text-gray-700 dark:text-gray-300">
+          <li>No suspicious .exe downloads — runs locally like an offline RPG Maker save editor once loaded</li>
+          <li>Works on Windows, macOS, Linux, and Android browsers</li>
+          <li>Every download bundles your edited save plus an unchanged original backup</li>
+          <li>Zero server upload, no login, and no third-party ad or tracking scripts</li>
         </ul>
       </div>
-      <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
-        <h3 class="text-lg font-bold text-gray-900 mb-2">Published Support</h3>
-        <ul class="text-sm space-y-2 list-disc list-inside">
-          <li><strong>Published entries</strong>: MZ .rmmzsave and MV .rpgsave</li>
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Published Scope &amp; Roadmap</h3>
+        <ul class="text-sm space-y-2 list-disc list-inside text-gray-700 dark:text-gray-300">
+          <li><strong>Published editors</strong>: RPG Maker MZ (<code>.rmmzsave</code>) and MV (<code>.rpgsave</code>)</li>
           <li><strong>Verified gold edits</strong>: MZ real-save workflow and MV official trial project</li>
-          <li><strong>Candidate fields</strong>: actor, inventory, variables, and switches require in-game verification</li>
+          <li><strong>Candidate fields</strong>: actor stats, inventory, variables, and switches require in-game verification</li>
+          <li><strong>Older formats</strong>: RPG Maker XP (<code>.rxdata</code>) and VX Ace (<code>.rvdata2</code>) are not yet published — <a href="/support/" class="text-primary-600 dark:text-primary-400 hover:underline">request support</a></li>
         </ul>
       </div>
     </div>
     <p>
-      Unlike editors that require unknown downloads, <strong>SaveFileTool</strong>
-      keeps the main editing flow in your web browser. The current public build does not ship
-      third-party analytics or advertising scripts, and selected save files are handled locally.
+      Unlike desktop tools that require unknown binaries, <strong>SaveFileTool</strong> is
+      <a href="https://github.com/bikai9289/savefiletool" target="_blank" rel="noopener noreferrer">open source on GitHub</a>
+      and keeps the entire editing flow inside your browser. Have a question about locating save folders or troubleshooting a custom plugin?
+      Check the <a href="/faq/">RPG Maker Save Editor FAQ</a> or <a href="/support/">Support guide</a>.
     </p>
   </div>
 </HomeTemplate>

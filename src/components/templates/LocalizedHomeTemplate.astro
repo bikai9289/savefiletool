@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteOrigin } from '../../lib/site';
+import { SMART_UPLOAD_ACCEPT } from '../../lib/saveExtensions';
+
+export interface LocalizedFaq {
+  q: string;
+  a: string;
+}
+
+export interface LocalizedStep {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  htmlLang: string;
+  pathSlug: string;
+  title: string;
+  description: string;
+  keywords: string;
+  heroBadge: string;
+  h1: string;
+  subtitle: string;
+  dropTitle: string;
+  dropBrowse: string;
+  mzBtn: string;
+  mvBtn: string;
+  stats: [string, string, string];
+  statLabels: [string, string, string];
+  mzCardTitle: string;
+  mzCardDesc: string;
+  mvCardTitle: string;
+  mvCardDesc: string;
+  openEditorLabel: string;
+  workflowTitle: string;
+  workflowDesc: string;
+  workflowAlt: string;
+  steps: [LocalizedStep, LocalizedStep, LocalizedStep];
+  folderTitle: string;
+  folderDesc: string;
+  folderAlt: string;
+  folderCaption: string;
+  previewTitle: string;
+  previewDesc: string;
+  previewAlt: string;
+  previewCaption: string;
+  faqTitle: string;
+  faqs: LocalizedFaq[];
+}
+
+const p = Astro.props;
+const siteUrl = getSiteOrigin(Astro.site);
+const pageUrl = `${siteUrl}/${p.pathSlug}/`;
+---
+
+<BaseLayout title={p.title} description={p.description} keywords={p.keywords} htmlLang={p.htmlLang}>
+  <section class="relative overflow-hidden bg-slate-950 text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_40%),linear-gradient(135deg,_rgba(15,23,42,0.96),_rgba(30,41,59,0.98))]"></div>
+    <div class="relative container mx-auto px-4 py-16 lg:py-24">
+      <div class="mx-auto max-w-5xl text-center">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium">
+          <span class="h-2 w-2 rounded-full bg-green-400"></span>
+          {p.heroBadge}
+        </div>
+
+        <h1 class="mb-6 text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          {p.h1}
+        </h1>
+        <p class="mx-auto mb-10 max-w-2xl text-lg text-slate-300 sm:text-xl">
+          {p.subtitle}
+        </p>
+
+        <div class="mx-auto mb-8 max-w-2xl">
+          <div
+            id="smart-upload-zone"
+            class="relative cursor-pointer rounded-2xl border-2 border-dashed border-white/30 p-8 transition hover:border-primary-300 hover:bg-white/5 lg:p-12"
+          >
+            <input
+              type="file"
+              id="smart-file-input"
+              class="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+              accept={SMART_UPLOAD_ACCEPT}
+            />
+            <div class="text-center">
+              <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-500 shadow-lg shadow-primary-900/40">
+                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.9A5 5 0 1115.9 6H16a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+              </div>
+              <p class="mb-2 text-xl font-semibold">{p.dropTitle}</p>
+              <p class="text-sm text-slate-400">{p.dropBrowse}</p>
+              <div class="mt-4 flex flex-wrap justify-center gap-2">
+                <span class="rounded bg-white/10 px-2 py-1 text-xs">.rmmzsave</span>
+                <span class="rounded bg-white/10 px-2 py-1 text-xs">.rpgsave</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="/editor/rpg-maker-mz/"
+          class="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+        >
+          {p.mzBtn}
+        </a>
+        <a
+          href="/editor/rpg-maker-mv/"
+          class="ml-3 inline-flex items-center justify-center rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+        >
+          {p.mvBtn}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto px-4 py-16">
+    <div class="mx-auto max-w-5xl space-y-16">
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-blue-100 bg-blue-50 p-6 text-center dark:border-blue-900/50 dark:bg-blue-950/40">
+          <div class="text-3xl font-bold text-blue-700 dark:text-blue-400">{p.stats[0]}</div>
+          <div class="mt-1 text-sm font-medium text-blue-900 dark:text-blue-200">{p.statLabels[0]}</div>
+        </div>
+        <div class="rounded-xl border border-green-100 bg-green-50 p-6 text-center dark:border-green-900/50 dark:bg-green-950/40">
+          <div class="text-3xl font-bold text-green-700 dark:text-green-400">{p.stats[1]}</div>
+          <div class="mt-1 text-sm font-medium text-green-900 dark:text-green-200">{p.statLabels[1]}</div>
+        </div>
+        <div class="rounded-xl border border-amber-100 bg-amber-50 p-6 text-center dark:border-amber-900/50 dark:bg-amber-950/40">
+          <div class="text-3xl font-bold text-amber-700 dark:text-amber-400">{p.stats[2]}</div>
+          <div class="mt-1 text-sm font-medium text-amber-900 dark:text-amber-200">{p.statLabels[2]}</div>
+        </div>
+      </div>
+
+      <!-- Format Cards -->
+      <div class="grid gap-6 md:grid-cols-2">
+        <a
+          href="/editor/rpg-maker-mz/"
+          class="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+        >
+          <div class="mb-2 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">{p.mzCardTitle}</h2>
+            <span class="rounded bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">.rmmzsave</span>
+          </div>
+          <p class="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{p.mzCardDesc}</p>
+          <span class="text-sm font-semibold text-primary-600 dark:text-primary-400 group-hover:underline">{p.openEditorLabel} &rarr;</span>
+        </a>
+        <a
+          href="/editor/rpg-maker-mv/"
+          class="group block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+        >
+          <div class="mb-2 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">{p.mvCardTitle}</h2>
+            <span class="rounded bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">.rpgsave</span>
+          </div>
+          <p class="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{p.mvCardDesc}</p>
+          <span class="text-sm font-semibold text-primary-600 dark:text-primary-400 group-hover:underline">{p.openEditorLabel} &rarr;</span>
+        </a>
+      </div>
+
+      <!-- Safe Workflow Diagram -->
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-8">
+        <h2 class="text-center text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">{p.workflowTitle}</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-600 dark:text-gray-300">{p.workflowDesc}</p>
+        <figure class="my-6 overflow-hidden rounded-xl border border-gray-200 bg-slate-50 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <img src="/images/guides/safe-edit-workflow.jpg" alt={p.workflowAlt} class="block h-auto w-full" loading="lazy" decoding="async" />
+        </figure>
+        <div class="grid gap-6 md:grid-cols-3">
+          {p.steps.map((step, i) => (
+            <div class="rounded-xl border border-gray-100 bg-gray-50 p-5 dark:border-gray-700 dark:bg-gray-900/60">
+              <div class="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">{i + 1}</div>
+              <h3 class="font-bold text-gray-900 dark:text-white">{step.title}</h3>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Folder Location Diagram -->
+      <div class="rounded-2xl border border-gray-200 bg-slate-50/70 p-6 dark:border-gray-700 dark:bg-gray-800/60 sm:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{p.folderTitle}</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{p.folderDesc}</p>
+        <figure class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <img src="/images/guides/save-folder-location.jpg" alt={p.folderAlt} class="block h-auto w-full" loading="lazy" decoding="async" />
+          <figcaption class="border-t border-gray-100 bg-gray-50 px-4 py-2.5 text-center text-xs text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+            {p.folderCaption}
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Editor UI Preview -->
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{p.previewTitle}</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{p.previewDesc}</p>
+        <figure class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+          <img src="/images/savefiletool-editor.png" alt={p.previewAlt} class="block h-auto w-full" loading="lazy" decoding="async" />
+          <figcaption class="border-t border-gray-100 bg-gray-50 px-4 py-2.5 text-center text-xs text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+            {p.previewCaption}
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-8">
+        <h2 class="mb-6 text-center text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">{p.faqTitle}</h2>
+        <div class="space-y-3">
+          {p.faqs.map((faq) => (
+            <details class="group rounded-xl border border-gray-200 bg-gray-50/70 open:bg-white dark:border-gray-700 dark:bg-gray-900/50 dark:open:bg-gray-800">
+              <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+                <h3>{faq.q}</h3>
+                <span class="ml-4 text-blue-600 transition-transform group-open:rotate-180 dark:text-blue-400">&#9662;</span>
+              </summary>
+              <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: p.h1,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Web Browser',
+      inLanguage: p.htmlLang,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      description: p.description,
+      url: pageUrl,
+    })}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: p.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      })),
+    })}
+  />
+  <script is:inline>
+    window.currentLang = 'en';
+  </script>
+  <script>
+    import '../../scripts/home';
+  </script>
+</BaseLayout>

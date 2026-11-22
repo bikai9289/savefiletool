@@ -5,18 +5,35 @@ import Footer from '../components/Footer.astro';
 import { getLangFromUrl } from '../i18n/utils';
 import { getCanonicalPath, getSiteOrigin } from '../lib/site';
 
+interface HreflangAlternate {
+  lang: string;
+  href: string;
+}
+
 interface Props {
   title: string;
   description: string;
   keywords?: string;
   ogImage?: string;
+  htmlLang?: string;
+  hreflangAlternates?: HreflangAlternate[];
 }
 
-const { title, description, keywords, ogImage } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
+const { title, description, keywords, ogImage, htmlLang, hreflangAlternates } = Astro.props;
+const lang = htmlLang || getLangFromUrl(Astro.url);
 const siteOrigin = getSiteOrigin(Astro.site);
 const canonicalURL = new URL(getCanonicalPath(Astro.url.pathname), siteOrigin);
 const siteUrl = `${siteOrigin}/`;
+const defaultHomeAlternates: HreflangAlternate[] = [
+  { lang: 'en', href: `${siteOrigin}/` },
+  { lang: 'ko', href: `${siteOrigin}/ko/` },
+  { lang: 'ja', href: `${siteOrigin}/ja/` },
+  { lang: 'zh-Hans', href: `${siteOrigin}/zh-cn/` },
+  { lang: 'x-default', href: `${siteOrigin}/` },
+];
+const normalizedPathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const isMultilingualHome = ['/', '/ko/', '/ja/', '/zh-cn/'].includes(normalizedPathname);
+const activeAlternates = hreflangAlternates || (isMultilingualHome ? defaultHomeAlternates : []);
 const defaultOgImage = new URL('/images/games/rpg-maker.webp', siteUrl).toString();
 const ogImageUrl = new URL(ogImage || defaultOgImage, siteUrl).toString();
 const structuredData = [
@@ -71,6 +88,11 @@ const structuredData = [
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonicalURL} />
+    {
+      activeAlternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+      ))
+    }
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

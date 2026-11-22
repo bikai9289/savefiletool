@@ -1,0 +1,48 @@
+---
+import LocalizedHomeTemplate from '../../components/templates/LocalizedHomeTemplate.astro';
+---
+
+<LocalizedHomeTemplate
+  htmlLang="ko"
+  pathSlug="ko"
+  title="RPG Maker 세이브 에디터 — rmmzsave / rpgsave 무료 온라인 편집기"
+  description="설치 없이 브라우저에서 RPG Maker MZ(.rmmzsave)와 MV(.rpgsave) 세이브 파일을 무료로 수정하세요. 서버 업로드 없이 로컬 처리되며 원본 백업 ZIP을 자동 포함합니다."
+  keywords="rmmzsave 에디터, rpgsave 에디터, RPG Maker 세이브 에디터, RPG 쯔꾸르 세이브 수정, 온라인 세이브 에디터"
+  heroBadge="브라우저 로컬 처리 · 설치 불필요"
+  h1="무료 온라인 RPG Maker 세이브 에디터"
+  subtitle="RPG Maker MZ(.rmmzsave) 및 MV(.rpgsave) 세이브 파일의 골드와 주요 값을 브라우저에서 안전하게 수정하세요. 서버 업로드가 없으며 원본 백업이 함께 저장됩니다."
+  dropTitle="여기에 .rmmzsave 또는 .rpgsave 파일을 끌어다 놓으세요"
+  dropBrowse="또는 클릭하여 파일 선택 (최대 10MB)"
+  mzBtn="MZ 에디터 열기 (.rmmzsave)"
+  mvBtn="MV 에디터 열기 (.rpgsave)"
+  stats={['2종', '100% 로컬', '10MB']}
+  statLabels={['검증된 확장자 (MZ / MV)', '서버 업로드 없음', '최대 파일 크기']}
+  mzCardTitle="RPG Maker MZ 세이브 에디터"
+  mzCardDesc="데스크톱 MZ 게임의 save/ 폴더 내 번호 슬롯(file1.rmmzsave)을 브라우저에서 열어 골드/재화를 수정하고 원본 백업과 함께 다운로드합니다."
+  mvCardTitle="RPG Maker MV 세이브 에디터"
+  mvCardDesc="MV 게임의 www/save/ 또는 save/ 폴더 내 file1.rpgsave 파일을 로컬에서 수정합니다. 공식 MV 1.6.1 프로젝트에서 골드 수정 및 인게임 로딩이 검증되었습니다."
+  openEditorLabel="에디터 열기"
+  workflowTitle="안전한 4단계 세이브 수정 방법"
+  workflowDesc="먼저 원본을 백업하고, 골드 등 검증된 항목부터 소폭 수정한 뒤 게임 내에서 정상 로딩을 확인하세요."
+  workflowAlt="RPG Maker 세이브 수정 4단계: 원본 백업, 브라우저 로컬 수정, ZIP 압축 해제, 게임 내 확인"
+  steps={[
+    { title: '세이브 파일 선택', desc: '게임 폴더의 save/ 또는 www/save/에서 file1.rmmzsave 또는 file1.rpgsave 슬롯을 선택하세요.' },
+    { title: '골드 및 항목 수정', desc: '검증된 골드(Gold/Money)부터 수정하는 것을 권장하며, 기타 후보 항목은 소폭 테스트 후 적용하세요.' },
+    { title: 'ZIP 압축 해제 및 적용', desc: '다운로드한 ZIP에는 수정본과 원본 백업이 함께 들어 있습니다. 게임을 종료한 뒤 수정본만 원래 슬롯에 덮어쓰세요.' },
+  ]}
+  folderTitle="RPG Maker MV / MZ 세이브 파일 위치 찾기"
+  folderDesc="config 또는 global 파일이 아닌 번호가 붙은 진행 슬롯(file1.rpgsave, file1.rmmzsave)을 선택해야 합니다."
+  folderAlt="RPG Maker MV(www/save/file1.rpgsave)와 MZ(save/file1.rmmzsave) 폴더 구조 비교"
+  folderCaption="MV는 www/save/file1.rpgsave, MZ는 save/file1.rmmzsave 슬롯을 선택하고 config/global 파일은 건너뛰세요."
+  previewTitle="브라우저 세이브 에디터 화면 미리보기"
+  previewDesc="복잡한 프로그램 설치 없이 웹 브라우저에서 골드, 캐릭터, 인벤토리, 변수, 스위치 구조를 바로 확인할 수 있습니다."
+  previewAlt="SaveFileTool 브라우저 RPG Maker 세이브 에디터 실행 화면"
+  previewCaption="SaveFileTool 실제 편집 화면: 수정 후 다운로드 시 원본 백업 파일이 ZIP에 자동 포함됩니다."
+  faqTitle="자주 묻는 질문 (FAQ)"
+  faqs={[
+    { q: 'rmmzsave 파일과 rpgsave 파일의 차이는 무엇인가요?', a: 'RPG Maker MZ는 pako 압축 기반의 .rmmzsave를 사용하고, RPG Maker MV는 LZString Base64 기반의 .rpgsave를 사용합니다. 확장자만 바꾸어서는 호환되지 않으므로 파일 원래 확장자에 맞는 에디터를 사용하세요.' },
+    { q: '내 세이브 파일이 서버에 업로드되나요?', a: '아니요. SaveFileTool은 100% 브라우저 내부에서 파일을 읽고 다시 생성합니다. 파일 내용이 외부 서버로 전송되지 않습니다.' },
+    { q: '수정 후 게임에 들어가도 골드가 바뀌지 않는 이유는?', a: '다운로드한 ZIP 파일 자체를 폴더에 넣지 말고 압축을 푼 뒤, 게임을 완전히 종료한 상태에서 원래 슬롯 파일(예: file1.rmmzsave)을 교체하세요. 클라우드 동기화가 켜져 있다면 이전 파일로 덮어씌워질 수 있습니다.' },
+    { q: 'RPG Maker XP(.rxdata)나 VX Ace(.rvdata2)도 지원하나요?', a: '현재 공개 검증된 형식은 MZ(.rmmzsave)와 MV(.rpgsave)입니다. 이전 세대 포맷은 실제 세이브 파일 검증 완료 후 순차 지원할 예정입니다.' },
+  ]}
+/>

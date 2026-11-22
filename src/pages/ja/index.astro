@@ -1,0 +1,48 @@
+---
+import LocalizedHomeTemplate from '../../components/templates/LocalizedHomeTemplate.astro';
+---
+
+<LocalizedHomeTemplate
+  htmlLang="ja"
+  pathSlug="ja"
+  title="RPGツクール セーブエディター — rmmzsave / rpgsave 無料オンライン編集"
+  description="インストール不要・ブラウザ完結のRPGツクールMZ（.rmmzsave）・MV（.rpgsave）セーブデータ編集ツール。所持金などをローカルで安全に編集し、元バックアップ付きZIPで保存できます。"
+  keywords="RPGツクール セーブエディター, rmmzsave 編集, rpgsave 編集, RPG Maker セーブデータ 改造, オンライン セーブエディター"
+  heroBadge="ブラウザ完結・サーバー送信なし"
+  h1="無料オンライン RPGツクール セーブエディター"
+  subtitle="RPGツクールMZ（.rmmzsave）およびMV（.rpgsave）のセーブデータをブラウザ上で安全に編集。ソフトのダウンロード不要で、元ファイルのバックアップも自動でZIPに同梱されます。"
+  dropTitle=".rmmzsave または .rpgsave ファイルをここにドロップ"
+  dropBrowse="またはクリックしてファイルを選択（最大10MB）"
+  mzBtn="MZエディターを開く (.rmmzsave)"
+  mvBtn="MVエディターを開く (.rpgsave)"
+  stats={['2形式', 'ローカル処理', '10MB']}
+  statLabels={['対応拡張子 (MZ / MV)', 'サーバーアップロード無し', '最大ファイルサイズ']}
+  mzCardTitle="RPGツクールMZ セーブエディター"
+  mzCardDesc="デスクトップ版MZの save/ フォルダ内にある番号付きスロット（file1.rmmzsave）を読み込み、所持金や候補パラメータをブラウザ内で安全に編集します。"
+  mvCardTitle="RPGツクールMV セーブエディター"
+  mvCardDesc="MVの www/save/ または save/ にある file1.rpgsave をローカルで編集。公式MV 1.6.1プロジェクトで所持金変更とゲーム内ロードを検証済みです。"
+  openEditorLabel="エディターを開く"
+  workflowTitle="安全なセーブデータ編集の4ステップ"
+  workflowDesc="必ず元データをバックアップした上で、まずは所持金など確認済みの項目から小さくテストしてください。"
+  workflowAlt="RPGツクールセーブ編集の4ステップ：元データバックアップ、ローカル編集、ZIP解凍、ゲーム内確認"
+  steps={[
+    { title: 'セーブファイルを選択', desc: 'ゲームフォルダ内の save/ または www/save/ から file1.rmmzsave / file1.rpgsave を選びます。' },
+    { title: '所持金などの数値を編集', desc: '検証済みの所持金（Gold / Money）から編集し、アイテムや変数は少量ずつゲーム内で確認してください。' },
+    { title: 'ZIPを解凍して差し替え', desc: 'ダウンロードしたZIPには編集済みファイルと元バックアップが入っています。ゲーム終了後に編集済みファイルを配置して確認します。' },
+  ]}
+  folderTitle="RPGツクール MV / MZ セーブデータの保存場所"
+  folderDesc="config や global ではなく、番号付きの進行スロット（file1.rpgsave / file1.rmmzsave）を選択してください。"
+  folderAlt="RPGツクールMV（www/save/file1.rpgsave）とMZ（save/file1.rmmzsave）のフォルダ構成図"
+  folderCaption="MVは www/save/file1.rpgsave、MZは save/file1.rmmzsave を選択し、config・global は対象外です。"
+  previewTitle="ブラウザ編集画面のプレビュー"
+  previewDesc="怪しい実行ファイルをダウンロードせず、ブラウザ上で所持金・アクター・アイテム・変数・スイッチを確認できます。"
+  previewAlt="SaveFileTool RPGツクール セーブエディターの編集画面"
+  previewCaption="SaveFileToolの編集画面：エクスポート時に元のセーブデータもバックアップとしてZIPに同梱されます。"
+  faqTitle="よくある質問（FAQ）"
+  faqs={[
+    { q: '.rmmzsave と .rpgsave の違いは何ですか？', a: 'RPGツクールMZはpako圧縮の .rmmzsave、MVはLZString（Base64）の .rpgsave を使用します。拡張子を書き換えても変換されないため、元の拡張子に対応するエディターをご利用ください。' },
+    { q: 'セーブファイルは外部サーバーに送信されますか？', a: 'いいえ。解析・再構築はすべてお使いのブラウザ内でローカル処理されます。ファイル内容がサーバーへ送信されることはありません。' },
+    { q: '編集したのにゲーム内の所持金が変わらない場合は？', a: 'ZIPファイルのまま置かず必ず解凍し、ゲームを完全に閉じた状態で元のスロット名（例：file1.rmmzsave）に上書きしてください。Steamクラウド等の同期が旧データを戻す場合もあるため、更新日時を確認してください。' },
+    { q: 'RPGツクールXP（.rxdata）やVX Ace（.rvdata2）には対応していますか？', a: '現在公開・検証済みの形式はMZ（.rmmzsave）とMV（.rpgsave）のみです。旧世代形式は実データでの動作検証が完了次第、順次対応予定です。' },
+  ]}
+/>

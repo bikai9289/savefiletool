@@ -65,16 +65,21 @@ const editorUrl = absUrl(editorHref);
         </p>
       </div>
 
-      <div class="min-h-[400px]">
+      <div id="editor-workspace" class="min-h-[400px]">
         <EditorApp
           client:only="react"
           acceptedFileTypes={engine.fileType}
           editorSlug={engine.slug}
         />
+        <noscript>
+          <p class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center text-sm text-amber-800">
+            JavaScript is required to run the local browser {engine.name} Save Editor for {engine.fileType} files.
+          </p>
+        </noscript>
       </div>
 
       <div class="prose prose-blue mt-16 max-w-none dark:prose-invert">
-        <h2>How to use the {engine.name} editor</h2>
+        <h2>How to use the {engine.name} Save Editor</h2>
         <ol>
           {
             engine.instructions.map((step) => (
@@ -85,7 +90,22 @@ const editorUrl = absUrl(editorHref);
           }
         </ol>
 
-        <h2>Published features</h2>
+        {engine.slug === 'rpg-maker-mv' && (
+          <figure class="my-8 not-prose overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <img
+              src="/images/savefiletool-editor.png"
+              alt="RPG Maker MV Save Editor showing verified browser-side gold editing"
+              class="w-full h-auto block"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="border-t border-gray-100 bg-gray-50 px-4 py-3 text-center text-sm text-gray-600 dark:border-gray-700 dark:bg-gray-800/90 dark:text-gray-300">
+              Example browser session in SaveFileTool: inspect detected MV values locally and download the edited .rpgsave file together with an original backup.
+            </figcaption>
+          </figure>
+        )}
+
+        <h2>Published {engine.name} Save Editor features</h2>
         <ul>
           {engine.features.map((feature) => <li>{feature}</li>)}
         </ul>
@@ -95,20 +115,54 @@ const editorUrl = absUrl(editorHref);
         {engine.slug === 'rpg-maker-mz' && (
           <RpgMakerMzGuide />
         )}
-        <p>
-          Using another RPG Maker format?{' '}
-          {editors.filter(other => other.slug !== engine.slug).map(other => (
-            <a href={localizePath(`/editor/${other.slug}`, lang)}>{other.name} editor ({other.fileType})</a>
-          ))}
-        </p>
+
+        <div class="not-prose mt-12">
+          <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Related RPG Maker Tools &amp; Guides</h2>
+          <div class="grid gap-4 sm:grid-cols-3">
+            {editors.filter(other => other.slug !== engine.slug).map(other => (
+              <a
+                href={localizePath(`/editor/${other.slug}`, lang)}
+                class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+              >
+                <div class="text-xs font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">{other.fileType}</div>
+                <div class="mt-1 font-bold text-gray-900 dark:text-white">{other.name} Save Editor</div>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Switch to the dedicated {other.name} editor if your game uses {other.fileType} slots.</p>
+              </a>
+            ))}
+            <a
+              href={localizePath('/faq', lang)}
+              class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+            >
+              <div class="text-xs font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">Troubleshooting</div>
+              <div class="mt-1 font-bold text-gray-900 dark:text-white">Save Editor FAQ</div>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Answers on save folder paths, browser-hosted games, custom plugins, and backup recovery.</p>
+            </a>
+            <a
+              href={localizePath('/support', lang)}
+              class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+            >
+              <div class="text-xs font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">Help &amp; Scope</div>
+              <div class="mt-1 font-bold text-gray-900 dark:text-white">Support &amp; Format Requests</div>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Report a parse issue or check our verification policy for additional RPG Maker formats.</p>
+            </a>
+          </div>
+        </div>
 
         <div class="not-prose mt-10 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-950/20">
-          <h3 class="mb-2 text-lg font-bold text-blue-900 dark:text-blue-400">Backup-first editing</h3>
+          <h3 class="mb-2 text-lg font-bold text-blue-900 dark:text-blue-400">Backup-first editing &amp; open-source transparency</h3>
           <p class="mb-4 text-blue-700 dark:text-blue-300">
-            Keep the original save file until the edited copy loads correctly in game.
+            Keep the original save file until the edited copy loads correctly in game. SaveFileTool is{' '}
+            <a href="https://github.com/bikai9289/savefiletool" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-900">
+              open source on GitHub
+            </a>
+            , built for{' '}
+            <a href="https://www.rpgmakerweb.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-900">
+              RPG Maker
+            </a>{' '}
+            save workflows.
           </p>
           <a href={homeHref} class="font-medium text-blue-600 hover:underline dark:text-blue-400">
-            Back to home
+            Back to RPG Maker Save Editor home &rarr;
           </a>
         </div>
       </div>

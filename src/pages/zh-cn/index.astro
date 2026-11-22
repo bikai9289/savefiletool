@@ -1,0 +1,48 @@
+---
+import LocalizedHomeTemplate from '../../components/templates/LocalizedHomeTemplate.astro';
+---
+
+<LocalizedHomeTemplate
+  htmlLang="zh-Hans"
+  pathSlug="zh-cn"
+  title="RPG Maker 存档修改器在线版 — 免费修改 rmmzsave / rpgsave 存档"
+  description="免安装、纯浏览器本地运行的 RPG Maker MZ（.rmmzsave）与 MV（.rpgsave）在线存档修改器。支持修改金币等数值，不上传服务器，导出自动附带原始存档备份 ZIP。"
+  keywords="RPG Maker 存档修改器, rmmzsave 修改器, rpgsave 修改器, RPG Maker MV 存档修改, RPG Maker MZ 存档修改, 在线存档编辑器"
+  heroBadge="100% 浏览器本地处理 · 无需下载软件"
+  h1="免费在线 RPG Maker 存档修改器"
+  subtitle="直接在浏览器中修改 RPG Maker MZ（.rmmzsave）与 MV（.rpgsave）游戏存档。无需下载可疑 exe，不上传服务器，导出自动打包原始备份文件。"
+  dropTitle="将 .rmmzsave 或 .rpgsave 存档拖放到此处"
+  dropBrowse="或点击选择本地存档文件（上限 10MB）"
+  mzBtn="打开 MZ 修改器 (.rmmzsave)"
+  mvBtn="打开 MV 修改器 (.rpgsave)"
+  stats={['2 种格式', '纯本地运行', '10MB']}
+  statLabels={['已验证格式 (MZ / MV)', '存档不上传服务器', '单文件大小上限']}
+  mzCardTitle="RPG Maker MZ 存档修改器"
+  mzCardDesc="打开桌面版 MZ 游戏 save/ 目录下的编号存档（如 file1.rmmzsave），支持实测验证的金钱/货币修改及角色、物品、开关变量查看。"
+  mvCardTitle="RPG Maker MV 存档修改器"
+  mvCardDesc="打开 MV 游戏 www/save/ 或 save/ 目录下的 file1.rpgsave 存档，金币修改已在官方 MV 1.6.1 工程中实机通过验证。"
+  openEditorLabel="进入修改器"
+  workflowTitle="4 步安全修改存档流程"
+  workflowDesc="先备份原档，优先修改已验证的金币数值，解压替换后进游戏确认无误再删除备份。"
+  workflowAlt="RPG Maker 存档安全修改 4 步骤：备份原档、本地修改、解压 ZIP、进游戏验证"
+  steps={[
+    { title: '选择编号存档文件', desc: '在游戏目录的 save/ 或 www/save/ 中找到 file1.rmmzsave 或 file1.rpgsave（跳过 config 和 global）。' },
+    { title: '修改金币或候选字段', desc: '建议首次先只修改金币/金钱并核对当前数值是否与游戏内一致，其他变量/开关小步测试。' },
+    { title: '解压 ZIP 并替换测试', desc: '下载的 ZIP 包含修改后的存档与原档备份。关闭游戏后，只把修改后的编号文件放回存档目录即可。' },
+  ]}
+  folderTitle="RPG Maker MV / MZ 存档目录在哪里？"
+  folderDesc="请认准带编号的进度存档槽（file1.rpgsave / file1.rmmzsave），不要修改 config 或 global 设置文件。"
+  folderAlt="RPG Maker MV（www/save/file1.rpgsave）与 MZ（save/file1.rmmzsave）存档路径图解"
+  folderCaption="MV 常见路径为 www/save/file1.rpgsave，MZ 常见路径为 save/file1.rmmzsave；请跳过 config 与 global。"
+  previewTitle="浏览器修改器界面预览"
+  previewDesc="打开即可查看金币、角色属性、背包道具、变量与开关，导出自动附带原档备份，不怕改坏存档。"
+  previewAlt="SaveFileTool RPG Maker 存档修改器浏览器编辑界面"
+  previewCaption="SaveFileTool 实机编辑界面：本地修改金币后一键导出包含原档备份的 ZIP 压缩包。"
+  faqTitle="常见问题（FAQ）"
+  faqs={[
+    { q: '.rmmzsave 和 .rpgsave 有什么区别？', a: 'RPG Maker MZ 使用 pako 压缩的 .rmmzsave，而 RPG Maker MV 使用 LZString Base64 编码的 .rpgsave。直接改文件后缀无法转换格式，请按原文件后缀选择对应的修改器页面。' },
+    { q: '我的游戏存档会上传到服务器吗？', a: '不会。所有读取、解析和重新打包均在你的浏览器本地完成，存档内容不会发送到任何远程服务器。' },
+    { q: '为什么替换后进游戏金币没有变化？', a: '请确认：① 已将下载的 ZIP 解压（不要把 .zip 直接放进存档目录）；② 替换前已完全关闭游戏；③ 没有被 Steam 云存档或游戏多份安装目录覆盖。可核对文件修改时间确认是否为当前生效目录。' },
+    { q: '支持 RPG Maker XP（.rxdata）或 VX Ace（.rvdata2）吗？', a: '目前公开承诺并验证支持的格式为 MZ（.rmmzsave）与 MV（.rpgsave）。更早期版本将在完成真机存档回归验证后逐步开放。' },
+  ]}
+/>

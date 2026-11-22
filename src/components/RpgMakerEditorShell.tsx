@@ -199,19 +199,19 @@ export default function RpgMakerEditorShell({ file, onBack, editorSlug }: RpgMak
 
     return (
         <div className="mx-auto max-w-6xl space-y-6">
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                        <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-primary-600">RPG Maker Save Editor</p>
-                        <h1 className="text-2xl font-bold text-gray-900">{file.name}</h1>
-                        <p className="mt-2 text-sm text-gray-600">
+                        <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">RPG Maker Save Editor</p>
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{file.name}</h2>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
                             Parsed locally as {formatLabel(format, isMv)}. Download creates a zip containing the edited file and the original backup.
                         </p>
                     </div>
                     <div className="flex flex-col gap-3 sm:flex-row">
                         <button
                             onClick={onBack}
-                            className="rounded-lg border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+                            className="rounded-lg border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
                         >
                             Choose another file
                         </button>
@@ -226,7 +226,7 @@ export default function RpgMakerEditorShell({ file, onBack, editorSlug }: RpgMak
                 </div>
 
                 {warnings.length > 0 && (
-                    <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+                    <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950/60 dark:text-amber-200">
                         {warnings.map((warning) => (
                             <p key={warning}>{warning}</p>
                         ))}
@@ -234,7 +234,7 @@ export default function RpgMakerEditorShell({ file, onBack, editorSlug }: RpgMak
                 )}
 
                 {downloadNotice === 'historyPrompt' && (
-                    <div className="mt-5 rounded-xl border border-primary-200 bg-primary-50 p-4 text-sm text-primary-900">
+                    <div className="mt-5 rounded-xl border border-primary-200 bg-primary-50 p-4 text-sm text-gray-900 dark:border-primary-800 dark:bg-primary-950/60 dark:text-blue-100">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                             <p>Your edited file was downloaded. Enable local history to keep a browser-only copy for faster repeat edits.</p>
                             <button
@@ -248,13 +248,29 @@ export default function RpgMakerEditorShell({ file, onBack, editorSlug }: RpgMak
                 )}
 
                 {downloadNotice === 'bookmark' && (
-                    <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-                        Download complete. Keep the original backup until the edited save loads correctly in game.
+                    <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-100">
+                        <p className="font-semibold">Download complete — next steps to verify in game:</p>
+                        <ol className="mt-2 list-decimal list-inside space-y-1 text-emerald-800 dark:text-emerald-200">
+                            <li>Extract the downloaded zip (do not put the <code>.zip</code> itself into your save folder).</li>
+                            <li>Close the game, replace the matching slot with <code>{file.name}</code>, and keep <code>backup-original-{file.name}</code> safe.</li>
+                            <li>Load the slot in game and confirm your new values before deleting the backup.</li>
+                        </ol>
+                        <div className="mt-3 flex flex-wrap gap-4 text-xs font-medium">
+                            <a href={isMv ? '/editor/rpg-maker-mz/' : '/editor/rpg-maker-mv/'} className="text-emerald-700 underline hover:text-emerald-900 dark:text-emerald-300 dark:hover:text-emerald-100">
+                                Need {isMv ? 'RPG Maker MZ (.rmmzsave)' : 'RPG Maker MV (.rpgsave)'}?
+                            </a>
+                            <a href="/faq/" className="text-emerald-700 underline hover:text-emerald-900 dark:text-emerald-300 dark:hover:text-emerald-100">
+                                Save not loading? Read the FAQ
+                            </a>
+                            <a href="/support/" className="text-emerald-700 underline hover:text-emerald-900 dark:text-emerald-300 dark:hover:text-emerald-100">
+                                Report a compatibility issue
+                            </a>
+                        </div>
                     </div>
                 )}
             </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm text-gray-900 dark:border-gray-700">
                 {isRpgMakerFormat ? (
                     <RpgMakerEditor data={data} onChange={setData} readOnly={!capabilities?.canEdit} isMv={isMv} />
                 ) : (
