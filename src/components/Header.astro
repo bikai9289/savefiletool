@@ -3,8 +3,21 @@ import { getLangFromUrl, localizePath, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const homeHref = '/';
 const normalizedPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const localeKey = normalizedPath.startsWith('/ko/')
+  ? 'ko'
+  : normalizedPath.startsWith('/ja/')
+    ? 'ja'
+    : normalizedPath.startsWith('/zh-cn/')
+      ? 'zh-cn'
+      : 'en';
+const navLabels = {
+  en: { home: 'Home', mz: 'MZ Editor', mv: 'MV Editor', faq: 'FAQ', start: 'Start Editing', homeHref: '/' },
+  ko: { home: '홈', mz: 'MZ 에디터', mv: 'MV 에디터', faq: 'FAQ', start: '편집 시작', homeHref: '/ko/' },
+  ja: { home: 'ホーム', mz: 'MZエディター', mv: 'MVエディター', faq: 'FAQ', start: '編集を始める', homeHref: '/ja/' },
+  'zh-cn': { home: '首页', mz: 'MZ 修改器', mv: 'MV 修改器', faq: '常见问题', start: '开始修改', homeHref: '/zh-cn/' },
+}[localeKey];
+const homeHref = navLabels.homeHref;
 const editorHref = normalizedPath.startsWith('/editor/rpg-maker-mv/')
   ? '/editor/rpg-maker-mv'
   : '/editor/rpg-maker-mz';
@@ -25,22 +38,22 @@ const isCurrentPath = (path: string) => normalizedPath === (path.endsWith('/') ?
     <nav class="hidden md:flex items-center gap-8 ml-auto">
       <a
         href={homeHref}
-        aria-current={isCurrentPath('/') ? 'page' : undefined}
+        aria-current={isCurrentPath(homeHref) ? 'page' : undefined}
         class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300"
-        >{t('nav.home')}</a
+        >{navLabels.home}</a
       >
       <a
         href={localizePath('/editor/rpg-maker-mz', lang)}
         aria-current={isCurrentPath('/editor/rpg-maker-mz/') ? 'page' : undefined}
         class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300"
-        >MZ Editor</a
+        >{navLabels.mz}</a
       >
-      <a href={localizePath('/editor/rpg-maker-mv', lang)} aria-current={isCurrentPath('/editor/rpg-maker-mv/') ? 'page' : undefined} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300">MV Editor</a>
+      <a href={localizePath('/editor/rpg-maker-mv', lang)} aria-current={isCurrentPath('/editor/rpg-maker-mv/') ? 'page' : undefined} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300">{navLabels.mv}</a>
       <a
         href={localizePath('/faq', lang)}
         aria-current={isCurrentPath('/faq/') ? 'page' : undefined}
         class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300"
-        >FAQ</a
+        >{navLabels.faq}</a
       >
     </nav>
 
@@ -74,7 +87,7 @@ const isCurrentPath = (path: string) => normalizedPath === (path.endsWith('/') ?
         href={localizePath(editorHref, lang)}
         class="hidden sm:block bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
       >
-        {t('nav.start')}
+        {navLabels.start}
       </a>
 
       <button

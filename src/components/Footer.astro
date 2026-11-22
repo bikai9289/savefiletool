@@ -3,6 +3,68 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const normalizedPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const localeKey = normalizedPath.startsWith('/ko/')
+  ? 'ko'
+  : normalizedPath.startsWith('/ja/')
+    ? 'ja'
+    : normalizedPath.startsWith('/zh-cn/')
+      ? 'zh-cn'
+      : 'en';
+const footerLabels = {
+  en: {
+    desc: t('footer.desc'),
+    editors: t('footer.editors'),
+    resources: t('footer.resources'),
+    legal: t('footer.legal'),
+    faq: t('footer.faq'),
+    support: t('nav.support'),
+    about: t('nav.about'),
+    contact: t('nav.contact'),
+    privacy: t('footer.privacy'),
+    terms: t('footer.terms'),
+    cookie: t('footer.cookie'),
+  },
+  ko: {
+    desc: 'RPG Maker MZ(.rmmzsave) 및 MV(.rpgsave) 로컬 세이브를 브라우저에서 안전하게 수정하는 무료 편집기입니다.',
+    editors: '에디터',
+    resources: '도움말',
+    legal: '정보 및 정책',
+    faq: '자주 묻는 질문',
+    support: '지원 안내',
+    about: '소개',
+    contact: '문의하기',
+    privacy: '개인정보 처리방침',
+    terms: '이용약관',
+    cookie: '쿠키 정책',
+  },
+  ja: {
+    desc: 'RPGツクールMZ（.rmmzsave）・MV（.rpgsave）のローカルセーブデータをブラウザで安全に編集できる無料ツールです。',
+    editors: 'エディター',
+    resources: 'ヘルプ',
+    legal: '運営・規約',
+    faq: 'よくある質問',
+    support: 'サポート',
+    about: '概要',
+    contact: 'お問い合わせ',
+    privacy: 'プライバシーポリシー',
+    terms: '利用規約',
+    cookie: 'クッキーポリシー',
+  },
+  'zh-cn': {
+    desc: '免费、纯浏览器本地运行的 RPG Maker MZ（.rmmzsave）与 MV（.rpgsave）存档修改器。',
+    editors: '存档修改器',
+    resources: '帮助文档',
+    legal: '站点与条款',
+    faq: '常见问题',
+    support: '支持与反馈',
+    about: '关于我们',
+    contact: '联系我们',
+    privacy: '隐私政策',
+    terms: '服务条款',
+    cookie: 'Cookie 政策',
+  },
+}[localeKey];
 const currentYear = new Date().getFullYear();
 const getPath = (path: string) => `/${path}/`;
 ---
@@ -18,12 +80,12 @@ const getPath = (path: string) => `/${path}/`;
           <span class="font-bold text-xl text-gray-900 dark:text-white">SaveFileTool</span>
         </div>
         <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-sm">
-          {t('footer.desc')}
+          {footerLabels.desc}
         </p>
       </div>
 
       <div>
-        <h4 class="font-bold text-gray-900 dark:text-white mb-4">{t('footer.editors')}</h4>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-4">{footerLabels.editors}</h4>
         <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
           <li><a href={getPath('editor/rpg-maker-mz')} class="hover:text-primary-600 transition-colors">RPG Maker MZ</a></li>
           <li><a href={getPath('editor/rpg-maker-mv')} class="hover:text-primary-600 transition-colors">RPG Maker MV</a></li>
@@ -31,21 +93,21 @@ const getPath = (path: string) => `/${path}/`;
       </div>
 
       <div>
-        <h4 class="font-bold text-gray-900 dark:text-white mb-4">{t('footer.resources')}</h4>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-4">{footerLabels.resources}</h4>
         <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-          <li><a href={getPath('faq')} class="hover:text-primary-600 transition-colors">{t('footer.faq')}</a></li>
-          <li><a href={getPath('support')} class="hover:text-primary-600 transition-colors">{t('nav.support')}</a></li>
+          <li><a href={getPath('faq')} class="hover:text-primary-600 transition-colors">{footerLabels.faq}</a></li>
+          <li><a href={getPath('support')} class="hover:text-primary-600 transition-colors">{footerLabels.support}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-bold text-gray-900 dark:text-white mb-4">{t('footer.legal')}</h4>
+        <h4 class="font-bold text-gray-900 dark:text-white mb-4">{footerLabels.legal}</h4>
         <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-          <li><a href={getPath('about')} class="hover:text-primary-600 transition-colors">{t('nav.about')}</a></li>
-          <li><a href={getPath('contact')} class="hover:text-primary-600 transition-colors">{t('nav.contact')}</a></li>
-          <li><a href={getPath('privacy')} class="hover:text-primary-600 transition-colors">{t('footer.privacy')}</a></li>
-          <li><a href={getPath('terms')} class="hover:text-primary-600 transition-colors">{t('footer.terms')}</a></li>
-          <li><a href={getPath('cookie-policy')} class="hover:text-primary-600 transition-colors">{t('footer.cookie')}</a></li>
+          <li><a href={getPath('about')} class="hover:text-primary-600 transition-colors">{footerLabels.about}</a></li>
+          <li><a href={getPath('contact')} class="hover:text-primary-600 transition-colors">{footerLabels.contact}</a></li>
+          <li><a href={getPath('privacy')} class="hover:text-primary-600 transition-colors">{footerLabels.privacy}</a></li>
+          <li><a href={getPath('terms')} class="hover:text-primary-600 transition-colors">{footerLabels.terms}</a></li>
+          <li><a href={getPath('cookie-policy')} class="hover:text-primary-600 transition-colors">{footerLabels.cookie}</a></li>
         </ul>
       </div>
     </div>
