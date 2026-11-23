@@ -9,6 +9,8 @@ const urls = [
     '/llms-full.txt',
     '/editor/rpg-maker-mz',
     '/editor/rpg-maker-mv',
+    '/guides/rpg-maker-save-editor-offline',
+    '/guides/best-rpg-maker-save-editor',
     '/about',
     '/faq',
     '/support',

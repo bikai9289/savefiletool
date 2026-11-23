@@ -18,6 +18,8 @@ For full documentation, see: ${origin}/llms-full.txt
 - /zh-cn/
 - /editor/rpg-maker-mz/
 - /editor/rpg-maker-mv/
+- /guides/rpg-maker-save-editor-offline/
+- /guides/best-rpg-maker-save-editor/
 - /faq/
 - /support/
 - /about/

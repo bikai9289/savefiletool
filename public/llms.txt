@@ -12,6 +12,8 @@ For full documentation, see: https://savefiletool.com/llms-full.txt
 - /zh-cn/
 - /editor/rpg-maker-mz/
 - /editor/rpg-maker-mv/
+- /guides/rpg-maker-save-editor-offline/
+- /guides/best-rpg-maker-save-editor/
 - /faq/
 - /support/
 - /about/

@@ -118,7 +118,7 @@ const editorUrl = absUrl(editorHref);
 
         <div class="not-prose mt-12">
           <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Related RPG Maker Tools &amp; Guides</h2>
-          <div class="grid gap-4 sm:grid-cols-3">
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {editors.filter(other => other.slug !== engine.slug).map(other => (
               <a
                 href={localizePath(`/editor/${other.slug}`, lang)}
@@ -138,12 +138,20 @@ const editorUrl = absUrl(editorHref);
               <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Answers on save folder paths, browser-hosted games, custom plugins, and backup recovery.</p>
             </a>
             <a
-              href={localizePath('/support', lang)}
+              href={localizePath('/guides/rpg-maker-save-editor-offline', lang)}
               class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
             >
-              <div class="text-xs font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-400">Help &amp; Scope</div>
-              <div class="mt-1 font-bold text-gray-900 dark:text-white">Support &amp; Format Requests</div>
-              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Report a parse issue or check our verification policy for additional RPG Maker formats.</p>
+              <div class="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Offline &amp; Privacy</div>
+              <div class="mt-1 font-bold text-gray-900 dark:text-white">Offline Local Editing Guide</div>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">How browser-side local processing replaces risky desktop .exe save editors.</p>
+            </a>
+            <a
+              href={localizePath('/guides/best-rpg-maker-save-editor', lang)}
+              class="block rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-primary-400 hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
+            >
+              <div class="text-xs font-semibold uppercase tracking-wide text-amber-600 dark:text-amber-400">Comparison</div>
+              <div class="mt-1 font-bold text-gray-900 dark:text-white">Best Save Editor Comparison</div>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Compare local web editors, server-upload tools, and desktop apps safely.</p>
             </a>
           </div>
         </div>

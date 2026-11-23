@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteOrigin } from '../../lib/site';
+
+const siteOrigin = getSiteOrigin(Astro.site);
+const pageUrl = `${siteOrigin}/guides/rpg-maker-save-editor-offline/`;
+const faqs = [
+  {
+    q: 'Does SaveFileTool upload my RPG Maker save file to a server?',
+    a: 'No. SaveFileTool decodes, edits, and rebuilds .rmmzsave and .rpgsave files locally in your browser memory. Your save contents are never sent to a remote server.',
+  },
+  {
+    q: 'Can I use this like an offline RPG Maker save editor without installing an .exe?',
+    a: 'Yes. Once the editor page loads in your browser, all parsing and rebuilding happen locally on your device—giving you the privacy of an offline desktop tool without downloading unknown executables.',
+  },
+  {
+    q: 'What if I want to edit RPG Maker saves on macOS, Linux, or Steam Deck?',
+    a: 'Because SaveFileTool runs in any modern browser, you can edit .rmmzsave and .rpgsave files on Windows, macOS, Linux, Steam Deck desktop mode, or Android without Windows-only .exe tools.',
+  },
+  {
+    q: 'Does it create a backup before I replace my save file?',
+    a: 'Yes. Every export downloads a single ZIP package containing both your rebuilt save slot and an untouched byte-for-byte copy of your original file.',
+  },
+];
+---
+
+<BaseLayout
+  title="RPG Maker Save Editor Offline — Local Browser MV & MZ Editing"
+  description="Looking for an offline RPG Maker save editor without risky .exe downloads? Edit MV .rpgsave and MZ .rmmzsave files 100% locally in your browser with automatic backup ZIPs."
+  keywords="rpg maker save editor offline, offline rpg maker save editor, local rpg maker save editor, no upload rpgsave editor, local rmmzsave editor"
+>
+  <section class="bg-slate-950 py-16 text-white">
+    <div class="container mx-auto px-4 text-center max-w-4xl">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium">
+        <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+        100% Local Browser Processing · Zero Server Uploads
+      </div>
+      <h1 class="mb-4 text-3xl font-bold tracking-tight sm:text-5xl">
+        RPG Maker Save Editor Offline: Safe Local Browser Editing
+      </h1>
+      <p class="mx-auto max-w-2xl text-lg text-slate-300">
+        Why most players search for an <strong>offline RPG Maker save editor</strong>—and how local browser processing gives you desktop-level privacy without downloading unverified <code>.exe</code> binaries.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/editor/rpg-maker-mz/" class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100">
+          Open MZ Editor (.rmmzsave)
+        </a>
+        <a href="/editor/rpg-maker-mv/" class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+          Open MV Editor (.rpgsave)
+        </a>
+        <a href="/" class="rounded-lg border border-white/20 px-5 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10">
+          RPG Maker Save Editor Home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto px-4 py-14">
+    <div class="mx-auto max-w-4xl space-y-12">
+      <!-- Why Offline Matters -->
+      <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Why players look for an offline RPG Maker save editor</h2>
+        <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Many older online save editors require uploading your <code>file1.rpgsave</code> or <code>file1.rmmzsave</code> to a remote server, waiting in a queue, or clicking past aggressive ads. On the other hand, downloading random desktop <code>.exe</code> editors from forums carries malware risk and often breaks on macOS, Linux, or Steam Deck.
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          <a href="/" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">SaveFileTool's RPG Maker Save Editor</a> solves both problems: once the page loads, the JavaScript parser runs <strong>entirely inside your local browser</strong>—just like an offline tool—with zero server uploads and open-source code you can inspect on <a href="https://github.com/bikai9289/savefiletool" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">GitHub</a>.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 text-xs uppercase tracking-wide text-gray-600 dark:text-gray-300">
+                <th class="px-4 py-3 font-semibold">Approach</th>
+                <th class="px-4 py-3 font-semibold">File Privacy</th>
+                <th class="px-4 py-3 font-semibold">Requires .exe Install?</th>
+                <th class="px-4 py-3 font-semibold">macOS / Linux / Mobile</th>
+                <th class="px-4 py-3 font-semibold">Auto Backup ZIP</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+              <tr class="bg-blue-50/40 dark:bg-blue-950/30">
+                <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">SaveFileTool (Local Browser)</td>
+                <td class="px-4 py-3 text-emerald-700 dark:text-emerald-300 font-medium">100% Local (No upload)</td>
+                <td class="px-4 py-3 text-emerald-700 dark:text-emerald-300">No</td>
+                <td class="px-4 py-3 text-emerald-700 dark:text-emerald-300">Yes</td>
+                <td class="px-4 py-3 text-emerald-700 dark:text-emerald-300">Included every download</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Server-Upload Web Editors</td>
+                <td class="px-4 py-3 text-amber-700 dark:text-amber-300">Uploaded to remote server</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">No</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Yes</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Rarely</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">Desktop .exe Editors</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Local</td>
+                <td class="px-4 py-3 text-red-700 dark:text-red-400">Yes (security risk)</td>
+                <td class="px-4 py-3 text-red-700 dark:text-red-400">Usually Windows-only</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Manual</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Visual Workflow -->
+      <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">How local offline-style save editing works</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          Your browser reads the selected save file through the local File API, decodes LZString (MV) or pako (MZ) right on your CPU, and builds a downloadable ZIP package containing your edited file plus your untouched original backup.
+        </p>
+        <figure class="my-6 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-900">
+          <img
+            src="/images/guides/safe-edit-workflow.jpg"
+            width="1376"
+            height="768"
+            alt="Four-step local offline-style RPG Maker save editing workflow"
+            class="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <figure class="my-6 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+          <img
+            src="/images/guides/save-folder-location.jpg"
+            width="1376"
+            height="768"
+            alt="RPG Maker MV www/save and MZ save folder locations"
+            class="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-2.5 text-center text-xs text-gray-600 dark:text-gray-300">
+            Select a numbered slot (<code>file1.rpgsave</code> or <code>file1.rmmzsave</code>) and skip <code>config</code> / <code>global</code>.
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Self-host offline option -->
+      <div class="rounded-2xl border border-emerald-200 dark:border-emerald-800/70 bg-emerald-50/70 dark:bg-emerald-950/40 p-6 sm:p-8">
+        <h2 class="text-xl font-bold text-emerald-950 dark:text-emerald-200">Need a 100% air-gapped offline copy?</h2>
+        <p class="mt-2 text-sm leading-relaxed text-emerald-900 dark:text-emerald-100">
+          Because SaveFileTool is MIT-licensed open source, advanced users can also clone the repository from{' '}
+          <a href="https://github.com/bikai9289/savefiletool" target="_blank" rel="noopener noreferrer" class="underline font-semibold">
+            github.com/bikai9289/savefiletool
+          </a>{' '}
+          and run <code>npm install &amp;&amp; npm run dev</code> locally with zero internet access.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Offline RPG Maker Save Editor FAQ</h2>
+        <div class="mt-5 space-y-3">
+          {faqs.map((faq) => (
+            <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+              <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+                <h3>{faq.q}</h3>
+                <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+              </summary>
+              <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <!-- Internal Cluster Links -->
+      <div class="grid gap-4 sm:grid-cols-3">
+        <a href="/editor/rpg-maker-mz/" class="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition hover:border-primary-400">
+          <div class="text-xs font-semibold uppercase text-primary-600 dark:text-primary-400">.rmmzsave</div>
+          <div class="mt-1 font-bold text-gray-900 dark:text-white">RPG Maker MZ Save Editor</div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Open local MZ save files with automatic backup ZIP export.</p>
+        </a>
+        <a href="/editor/rpg-maker-mv/" class="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition hover:border-primary-400">
+          <div class="text-xs font-semibold uppercase text-emerald-600 dark:text-emerald-400">.rpgsave</div>
+          <div class="mt-1 font-bold text-gray-900 dark:text-white">RPG Maker MV Save Editor</div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Verified MV 1.6.1 gold editing locally in your browser.</p>
+        </a>
+        <a href="/guides/best-rpg-maker-save-editor/" class="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition hover:border-primary-400">
+          <div class="text-xs font-semibold uppercase text-amber-600 dark:text-amber-400">Comparison</div>
+          <div class="mt-1 font-bold text-gray-900 dark:text-white">Best RPG Maker Save Editor Guide</div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Compare online, local browser, and desktop editors side by side.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      })),
+    })}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteOrigin}/` },
+        { '@type': 'ListItem', position: 2, name: 'RPG Maker Save Editor Offline', item: pageUrl },
+      ],
+    })}
+  />
+</BaseLayout>

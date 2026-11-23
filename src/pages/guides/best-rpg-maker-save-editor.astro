@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteOrigin } from '../../lib/site';
+
+const siteOrigin = getSiteOrigin(Astro.site);
+const pageUrl = `${siteOrigin}/guides/best-rpg-maker-save-editor/`;
+const faqs = [
+  {
+    q: 'What is the safest RPG Maker save editor for MV and MZ?',
+    a: 'A local browser-based editor like SaveFileTool is the safest option for .rpgsave and .rmmzsave files because it never requires downloading an unknown .exe, never uploads your save file to a server, and automatically bundles an unchanged original backup in every download ZIP.',
+  },
+  {
+    q: 'Which RPG Maker save editor works on Mac, Linux, and mobile?',
+    a: 'Browser-based editors work across Windows, macOS, Linux, Steam Deck, and Android without Wine or emulators. Desktop .exe editors are usually Windows-only.',
+  },
+  {
+    q: 'Can one editor handle both .rpgsave and .rmmzsave?',
+    a: 'MV (.rpgsave) uses LZString Base64 while MZ (.rmmzsave) uses pako compression. SaveFileTool provides dedicated MV and MZ editors so each format is validated cleanly before editing.',
+  },
+];
+---
+
+<BaseLayout
+  title="Best RPG Maker Save Editor (2026) — Online vs Offline Compared"
+  description="Compare the best RPG Maker save editors for MV (.rpgsave) and MZ (.rmmzsave): local browser editing, server-upload tools, and desktop apps compared on safety, backups, and ease of use."
+  keywords="best rpg maker save editor, rpg maker save editor comparison, safe rpg maker save editor, rpg maker mv mz editor"
+>
+  <section class="bg-slate-950 py-16 text-white">
+    <div class="container mx-auto px-4 text-center max-w-4xl">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium">
+        <span class="h-2 w-2 rounded-full bg-blue-400"></span>
+        Honest Tool Comparison · MV &amp; MZ Focus
+      </div>
+      <h1 class="mb-4 text-3xl font-bold tracking-tight sm:text-5xl">
+        Best RPG Maker Save Editor: How to Choose Safely
+      </h1>
+      <p class="mx-auto max-w-2xl text-lg text-slate-300">
+        Not every <strong>RPG Maker save editor</strong> treats your files the same way. Here is how local browser editors, server-upload websites, and desktop downloads compare on safety, backup protection, and format accuracy.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100">
+          Try SaveFileTool Free
+        </a>
+        <a href="/editor/rpg-maker-mz/" class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+          MZ Editor (.rmmzsave)
+        </a>
+        <a href="/editor/rpg-maker-mv/" class="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+          MV Editor (.rpgsave)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto px-4 py-14">
+    <div class="mx-auto max-w-4xl space-y-12">
+      <!-- Comparison Table -->
+      <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">RPG Maker Save Editor Comparison Matrix</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          When choosing the <strong>best RPG Maker save editor</strong> for your playthrough, four criteria matter most: whether your file leaves your PC, whether you get an automatic backup, whether the tool is open source, and whether it supports your exact file extension.
+        </p>
+
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 text-xs uppercase tracking-wide text-gray-600 dark:text-gray-300">
+                <th class="px-4 py-3 font-semibold">Criteria</th>
+                <th class="px-4 py-3 font-semibold">SaveFileTool (Local Web)</th>
+                <th class="px-4 py-3 font-semibold">Typical Server Web Editors</th>
+                <th class="px-4 py-3 font-semibold">Desktop .exe Editors</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+              <tr class="bg-blue-50/40 dark:bg-blue-950/30">
+                <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">Where parsing runs</td>
+                <td class="px-4 py-3 font-medium text-emerald-700 dark:text-emerald-300">100% in your browser</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Remote server upload</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Local Windows PC</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">Original backup included</td>
+                <td class="px-4 py-3 font-medium text-emerald-700 dark:text-emerald-300">Auto-bundled in ZIP</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Usually manual</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Varies / manual</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">Open-source code</td>
+                <td class="px-4 py-3 font-medium text-emerald-700 dark:text-emerald-300">Yes (MIT on GitHub)</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Closed source</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Mixed</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">Ads &amp; popups</td>
+                <td class="px-4 py-3 font-medium text-emerald-700 dark:text-emerald-300">None</td>
+                <td class="px-4 py-3 text-amber-700 dark:text-amber-300">Heavy display ads</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">None (installer risk)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">Best for</td>
+                <td class="px-4 py-3 text-gray-700 dark:text-gray-200">Safe, fast MV (<code>.rpgsave</code>) &amp; MZ (<code>.rmmzsave</code>) edits</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Multi-engine legacy formats</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-gray-300">Deep custom-plugin modding</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Visual Preview -->
+      <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What a clean backup-first editor looks like</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          Instead of dumping raw minified JSON or making unverified promises, SaveFileTool clearly separates verified gold editing from candidate actor, item, switch, and variable fields—and lets you optionally load your game's local JSON database via Folder Mode.
+        </p>
+        <figure class="my-6 overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+          <img
+            src="/images/savefiletool-editor.png"
+            width="1280"
+            height="960"
+            alt="SaveFileTool browser-based RPG Maker MV and MZ save editor interface"
+            class="block h-auto w-full"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-2.5 text-center text-xs text-gray-600 dark:text-gray-300">
+            SaveFileTool editor interface: clear evidence badges, local Folder Mode labeling, and one-click backup ZIP export.
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Honest Scope Recommendation -->
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-emerald-200 dark:border-emerald-800/70 bg-emerald-50/70 dark:bg-emerald-950/40 p-6">
+          <h2 class="text-lg font-bold text-emerald-950 dark:text-emerald-200">Choose SaveFileTool when...</h2>
+          <ul class="mt-3 space-y-2 text-sm text-emerald-900 dark:text-emerald-100 list-disc list-inside">
+            <li>Your game uses RPG Maker MZ (<code>.rmmzsave</code>) or MV (<code>.rpgsave</code>).</li>
+            <li>You want fast gold/money edits without downloading a desktop <code>.exe</code>.</li>
+            <li>You want an automatic original backup bundled with every download.</li>
+            <li>You are on Windows, macOS, Linux, Steam Deck, or Android.</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-amber-200 dark:border-amber-800/70 bg-amber-50/70 dark:bg-amber-950/40 p-6">
+          <h2 class="text-lg font-bold text-amber-950 dark:text-amber-200">When you need another tool</h2>
+          <ul class="mt-3 space-y-2 text-sm text-amber-900 dark:text-amber-100 list-disc list-inside">
+            <li>Older RPG Maker XP (<code>.rxdata</code>) or VX Ace (<code>.rvdata2</code>) saves (not yet published on SaveFileTool).</li>
+            <li>Games using proprietary save encryption plugins that alter standard MV/MZ compression.</li>
+            <li>Browser-hosted games that store saves strictly inside IndexedDB without an export button.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Common Questions</h2>
+        <div class="mt-5 space-y-3">
+          {faqs.map((faq) => (
+            <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+              <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+                <h3>{faq.q}</h3>
+                <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+              </summary>
+              <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <!-- Internal Cluster Links -->
+      <div class="grid gap-4 sm:grid-cols-3">
+        <a href="/" class="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition hover:border-primary-400">
+          <div class="text-xs font-semibold uppercase text-primary-600 dark:text-primary-400">Main Tool</div>
+          <div class="mt-1 font-bold text-gray-900 dark:text-white">RPG Maker Save Editor</div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Drop your .rmmzsave or .rpgsave file directly on the home page.</p>
+        </a>
+        <a href="/guides/rpg-maker-save-editor-offline/" class="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition hover:border-primary-400">
+          <div class="text-xs font-semibold uppercase text-emerald-600 dark:text-emerald-400">Offline Guide</div>
+          <div class="mt-1 font-bold text-gray-900 dark:text-white">Offline Local Save Editing</div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">How browser-side local processing replaces risky desktop .exe downloads.</p>
+        </a>
+        <a href="/faq/" class="block rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm transition hover:border-primary-400">
+          <div class="text-xs font-semibold uppercase text-amber-600 dark:text-amber-400">Troubleshooting</div>
+          <div class="mt-1 font-bold text-gray-900 dark:text-white">RPG Maker Save FAQ</div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">Save folder paths, cloud sync tips, and backup recovery steps.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      })),
+    })}
+  />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteOrigin}/` },
+        { '@type': 'ListItem', position: 2, name: 'Best RPG Maker Save Editor', item: pageUrl },
+      ],
+    })}
+  />
+</BaseLayout>
