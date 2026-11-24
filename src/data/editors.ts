@@ -9,6 +9,8 @@ export interface EditorData {
   title: string;
   description: string;
   keywords: string;
+  /** First paragraph under the H1. Supports `code` backticks. */
+  intro: string;
   features: string[];
   instructions: string[];
 }
@@ -23,6 +25,8 @@ export const editors: EditorData[] = [
       'Free RPG Maker MZ save editor for tested .rmmzsave files. Edit compatible saves in your browser with no download.',
     keywords:
       'rpg maker mz save editor, rmmzsave editor, .rmmzsave editor online, edit rmmzsave file',
+    intro:
+      'A free rmmzsave editor that runs in your browser: open your RPG Maker MZ rmmzsave file (`.rmmzsave`), change the tested money value, and download the rebuilt save together with an untouched backup.',
     features: [
       'Edit gold and money fields tested on a real .rmmzsave workflow',
       'Review candidate actor, inventory, variable, and switch fields with backup-first warnings',
@@ -43,6 +47,8 @@ export const editors: EditorData[] = [
       'Free .rpgsave editor for RPG Maker MV saves. Edit gold locally in your browser and download the edited save with an original backup. No installation or signup.',
     keywords:
       'rpgsave editor, rpg maker mv save editor, .rpgsave editor online, edit rpgsave file',
+    intro:
+      'A free rpgsave editor that runs in your browser: open your RPG Maker MV rpgsave file (`.rpgsave`), change the verified gold value, and download the rebuilt save together with an untouched backup.',
     features: [
       'Gold editing verified in an official RPG Maker MV 1.6.1 trial project: 1234 to 98765, confirmed by loading the edited save in game',
       'Process .rpgsave files locally in your browser without uploading save contents',

@@ -1,10 +1,10 @@
 <section aria-label="RPG Maker MZ save editing guide" class="not-prose mt-14 space-y-12">
   <!-- Intro Summary Card -->
   <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What is an .rmmzsave editor?</h2>
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What is an rmmzsave editor?</h2>
     <div class="mt-4 grid gap-6 md:grid-cols-2">
       <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-        An <strong>.rmmzsave editor</strong> opens a compatible RPG Maker MZ save slot, displays its stored values, and
+        An <strong>rmmzsave editor</strong> opens an RPG Maker MZ <code>.rmmzsave</code> file, displays its stored values, and
         rebuilds the file after an edit. SaveFileTool runs online while keeping save contents on your device: select the
         numbered slot above, review the detected money value, and download your edited copy bundled with its original
         backup. No account or software installation is required.
@@ -194,6 +194,18 @@
   <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white">RPG Maker MZ save editing questions</h2>
     <div class="mt-5 space-y-3">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+          <h3>Which rmmzsave file should I open in the rmmzsave editor?</h3>
+          <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+        </summary>
+        <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Open a numbered rmmzsave file such as <code>file1.rmmzsave</code> from the game's <code>save/</code> folder.
+          <code>config.rmmzsave</code> and <code>global.rmmzsave</code> only hold settings and the save list, so the
+          rmmzsave editor will not find party money in them.
+        </p>
+      </details>
+
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
         <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
           <h3>Why does my game call the money Gems instead of gold?</h3>

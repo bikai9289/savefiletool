@@ -1,10 +1,10 @@
 <section aria-label="RPG Maker MV save editing guide" class="not-prose mt-14 space-y-12">
   <!-- Intro Summary Card -->
   <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What is an .rpgsave editor?</h2>
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What is an rpgsave editor?</h2>
     <div class="mt-4 grid gap-6 md:grid-cols-2">
       <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-        An <strong>.rpgsave editor</strong> reads an RPG Maker MV save slot and lets you change compatible values
+        An <strong>rpgsave editor</strong> reads an RPG Maker MV <code>.rpgsave</code> file and lets you change compatible values
         before rebuilding the file. SaveFileTool runs this workflow in your browser: choose your desktop save above,
         check the detected gold value, make a small change, and download a zip containing both the edited save and
         an unchanged original backup. No account or installer is required.
@@ -205,6 +205,18 @@
   <div class="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 dark:bg-gray-800 p-6 shadow-sm sm:p-8">
     <h2 class="text-2xl font-bold text-gray-900 dark:text-white">RPG Maker MV save editing questions</h2>
     <div class="mt-5 space-y-3">
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
+        <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
+          <h3>Which rpgsave file should I open in the rpgsave editor?</h3>
+          <span class="ml-4 text-blue-600 dark:text-blue-400 transition-transform group-open:rotate-180">&#9662;</span>
+        </summary>
+        <p class="px-4 pb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          Open a numbered rpgsave file such as <code>file1.rpgsave</code> from <code>www/save/</code> or
+          <code>save/</code>. <code>config.rpgsave</code> and <code>global.rpgsave</code> only hold settings and the
+          save list, so the rpgsave editor will not find party gold in them.
+        </p>
+      </details>
+
       <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/50 open:bg-white dark:open:bg-gray-800">
         <summary class="flex cursor-pointer list-none items-center justify-between p-4 font-semibold text-gray-900 dark:text-white">
           <h3>Why does the game still show my old gold?</h3>
